@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <com.android.xlwlibrary.view.XCenterSpreadLayout
+        android:clickable="true"
+        android:id="@+id/follow_ex_lin"
+        android:layout_alignParentRight="true"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        tools:ignore="MissingConstraints">
+
+        <TextView
+            android:text="点击"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </com.android.xlwlibrary.view.XCenterSpreadLayout>
+
+    <com.android.xlwlibrary.view.XIntervalEdittext
+        android:textColor="@color/colorPrimary"
+        android:maxLength="13"
+        android:textSize="14sp"
+        android:imeOptions="actionNext"
+        android:id="@+id/login_phone"
+        android:layout_marginLeft="20dp"
+        android:singleLine="true"
+        android:hint="电话号码"
+        android:background="@null"
+        android:inputType="number"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+</LinearLayout>

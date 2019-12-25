@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+    <color name="bar_text">#1296DB</color>
+    <color name="notice_txt">#E40153</color>
+    <color name="notice_bg_color">#1296DB</color>
+    <color name="white">#FFFFFF</color>
+    <color name="weather_txt">#4EABFF</color>
+    <color name="view_gray">#BFBFBF</color>
+    <color name="approve_shape">#ffe7fcf5</color>
+    <color name="review_shape">#ffe5f0ff</color>
+    <color name="refuse_shape">#fffcebe9</color>
+    <color name="approve_tv">#22B684</color>
+    <color name="review_tv">#3A78CF</color>
+    <color name="refuse_tv">#F15340</color>
+    <color name="bull_title">#E40153</color>
+    <color name="belate_count">#E34744</color>
+    <color name="name_tips">#80D8FF</color>
+    <color name="qj_time">#8D8D8D</color>
+    <color name="item_student_name">#000101</color>
+    <color name="student_name">#000000</color>
+    <color name="class_title">#8d8d8d</color>
+    <color name="zd_content">#C2C2C2</color>
+    <color name="main_comre">#ffffffff</color>
+    <color name="main_noticecontent">#B2B2B2</color>
+    <color name="mainn_addviewtext">#54C6FF</color>
+    <color name="green">#179F76</color>
+    <color name="blue">#2A74FF</color>
+    <color name="pink">#9B2E2E</color>
+</resources>
