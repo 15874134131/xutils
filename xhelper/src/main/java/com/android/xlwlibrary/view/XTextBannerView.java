@@ -19,7 +19,7 @@ import android.widget.ViewFlipper;
 import androidx.annotation.AnimRes;
 
 import com.android.xlwlibrary.R;
-import com.android.xlwlibrary.callback.ITextBannerItemCallback;
+import com.android.xlwlibrary.listener.ITextBannerItemListener;
 import com.android.xlwlibrary.helper.XDisplayHelper;
 import com.android.xlwlibrary.helper.XOperationHelper;
 
@@ -64,7 +64,7 @@ public class XTextBannerView extends RelativeLayout {
     private static final int TYPE_ITALIC_BOLD = 3;
 
     private List<String> mDatas;
-    private ITextBannerItemCallback mListener;
+    private ITextBannerItemListener mListener;
     private boolean isStarted;
     private boolean isDetachedFromWindow;
     public XTextBannerView(Context context) {
@@ -309,7 +309,7 @@ public class XTextBannerView extends RelativeLayout {
 
 
     /**设置点击监听事件回调*/
-    public void setItemOnClickListener(ITextBannerItemCallback listener){
+    public void setItemOnClickListener(ITextBannerItemListener listener){
         this.mListener = listener;
     }
 

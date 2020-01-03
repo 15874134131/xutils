@@ -106,11 +106,11 @@ public abstract class XBaseActivity<P extends XBasePresenter> extends FragmentAc
     protected void onDestroy() {
         hideLoading();
         super.onDestroy();
-        mPresenter.cancelAll();
         /**
          * 在生命周期结束时，将 presenter 与 view 之间的联系断开，防止出现内存泄露
          */
         if (mPresenter != null) {
+            mPresenter.cancelAll();
             mPresenter.detachView();
         }
 		if (isRegisterEventBus()) {

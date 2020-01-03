@@ -104,9 +104,8 @@ public abstract class XBaseFragment<P extends XBasePresenter> extends Fragment i
     public void onDestroy() {
         hideLoading();
         super.onDestroy();
-        mPresenter.cancelAll();
-
         if (mPresenter != null) {
+            mPresenter.cancelAll();
             mPresenter.detachView();
         }
         unbinder.unbind();

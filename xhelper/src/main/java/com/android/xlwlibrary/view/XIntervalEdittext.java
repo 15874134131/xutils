@@ -8,7 +8,7 @@ import android.util.AttributeSet;
 
 import androidx.appcompat.widget.AppCompatEditText;
 
-import com.android.xlwlibrary.callback.IntervalEdittextCallback;
+import com.android.xlwlibrary.listener.IntervalEdittextListener;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -24,10 +24,10 @@ public class XIntervalEdittext extends AppCompatEditText implements TextWatcher 
     private static final int PHONE_INDEX_8 = 8;
     private static final int PHONE_INDEX_9 = 9;
     //private Paint mPaint;
-    private IntervalEdittextCallback callback;
+    private IntervalEdittextListener callback;
 
-    public void setIntervalEdittextCallback(IntervalEdittextCallback intervalEdittextCallback){
-        this.callback= intervalEdittextCallback;
+    public void setIntervalEdittextCallback(IntervalEdittextListener intervalEdittextListener){
+        this.callback= intervalEdittextListener;
     }
 
     public XIntervalEdittext(Context context, AttributeSet attrs) {

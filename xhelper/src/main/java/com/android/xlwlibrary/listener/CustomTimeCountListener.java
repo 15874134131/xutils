@@ -1,9 +1,9 @@
-package com.android.xlwlibrary.callback;
+package com.android.xlwlibrary.listener;
 
 /**
  * Created by xu on 2019/12/11.
  */
-public interface CustomTimeCountCallback {
+public interface CustomTimeCountListener {
     void onCountDownTimerTick(long l);
     void onCountDownTimerFinish();
 }

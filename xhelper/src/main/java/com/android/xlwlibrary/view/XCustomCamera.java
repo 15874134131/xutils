@@ -29,8 +29,8 @@ import android.view.TextureView;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 
-import com.android.xlwlibrary.callback.CustomCameraCallback;
-import com.android.xlwlibrary.callback.CustomCameraImgCallback;
+import com.android.xlwlibrary.listener.CustomCameraListener;
+import com.android.xlwlibrary.listener.CustomCameraImgListener;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -72,18 +72,18 @@ public class XCustomCamera {
     private CameraCaptureSession mPreviewSession;
     private TextureView tvShowphoto;
     private CameraManager cameraManager;
-    private CustomCameraCallback mCustomCameraCallback;
-    private CustomCameraImgCallback customCameraImgCallback;
+    private CustomCameraListener mCustomCameraListener;
+    private CustomCameraImgListener customCameraImgListener;
 
     //该回调用于回调摄像机是否成功打开
-    public void steCustomCameraImgCallback(CustomCameraImgCallback cameraImgCallback){
-        this.customCameraImgCallback=cameraImgCallback;
+    public void steCustomCameraImgCallback(CustomCameraImgListener cameraImgCallback){
+        this.customCameraImgListener =cameraImgCallback;
     }
 
     //该回调为成功预览时的回调。，因为基于我之前的设想 ，在第一次初始化成功后，我们执行了然后调用stopRepeating（）停止预览 ，
     // 因此在初始化时并没有返回成功预览的回调，所以本例只在重新预览时返回
-    public void setCustomCameraCallback(CustomCameraCallback customCameraCallback){
-        this.mCustomCameraCallback=customCameraCallback;
+    public void setCustomCameraCallback(CustomCameraListener customCameraListener){
+        this.mCustomCameraListener = customCameraListener;
     }
 
     static {
@@ -263,21 +263,21 @@ public class XCustomCamera {
             mCameraDevice = camera;
             //打开摄像头成功，开启预览
             //startPreview();
-            customCameraImgCallback.callBackImgPath(true);
+            customCameraImgListener.callBackImgPath(true);
         }
 
         @Override
         public void onDisconnected(@NonNull CameraDevice camera) {
             camera.close();
             mCameraDevice = null;
-            customCameraImgCallback.callBackImgPath(false);
+            customCameraImgListener.callBackImgPath(false);
         }
 
         @Override
         public void onError(@NonNull CameraDevice camera, int error) {
             camera.close();
             mCameraDevice = null;
-            customCameraImgCallback.callBackImgPath(false);
+            customCameraImgListener.callBackImgPath(false);
         }
     };
 
@@ -317,8 +317,8 @@ public class XCustomCamera {
         try {
             //执行setRepeatingRequest方法就行了，注意mCaptureRequest是之前开启预览设置的请求
             mPreviewSession .setRepeatingRequest(mCaptureRequest, mSessionCaptureCallback, mCameraHandler);
-            if (mCustomCameraCallback != null) {
-                mCustomCameraCallback.setPreviewSuccess();
+            if (mCustomCameraListener != null) {
+                mCustomCameraListener.setPreviewSuccess();
             }
         } catch (CameraAccessException e) {
             e.printStackTrace();

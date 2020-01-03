@@ -2,16 +2,16 @@ package com.android.xlwlibrary.view;
 
 import android.os.CountDownTimer;
 
-import com.android.xlwlibrary.callback.CustomTimeCountCallback;
+import com.android.xlwlibrary.listener.CustomTimeCountListener;
 
 /**
  * Created by xu on 2019/12/11.
  * 传入总毫秒数和 每次减少多少毫秒
  */
 public class XCustomTimeCount extends CountDownTimer {
-    private CustomTimeCountCallback callback;
+    private CustomTimeCountListener callback;
 
-    public void setCallback(CustomTimeCountCallback countCallback){
+    public void setCallback(CustomTimeCountListener countCallback){
         this.callback=countCallback;
     }
     public XCustomTimeCount(long millisInFuture, long countDownInterval) {

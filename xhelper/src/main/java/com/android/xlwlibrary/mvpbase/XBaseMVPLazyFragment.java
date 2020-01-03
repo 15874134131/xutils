@@ -11,7 +11,7 @@ import org.greenrobot.eventbus.ThreadMode;
  * Created by xu on 2019/9/9.
  * 先显示基础布局，再显示网络等数据
  */
-public abstract class XXBaseMVPLazyFragment<P extends XBasePresenter> extends XBaseFragment<P> implements XIbaseView {
+public abstract class XBaseMVPLazyFragment<P extends XBasePresenter> extends XBaseFragment<P> implements XIbaseView {
     private static final String TAG="XBaseFragment";
     private P mPresenter;
 
@@ -139,8 +139,8 @@ public abstract class XXBaseMVPLazyFragment<P extends XBasePresenter> extends XB
     public void onDestroy() {
         hideLoading();
         super.onDestroy();
-        mPresenter.cancelAll();
         if (mPresenter != null) {
+            mPresenter.cancelAll();
             mPresenter.detachView();
         }
         if (isRegisterEventBus()) {

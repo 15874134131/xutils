@@ -1,4 +1,4 @@
-package com.android.xlwlibrary.callback;
+package com.android.xlwlibrary.listener;
 
 /**
  *
@@ -8,6 +8,6 @@ package com.android.xlwlibrary.callback;
  * @date 2018/3/28/028 21:40
  *
  */
-public interface ITextBannerItemCallback {
+public interface ITextBannerItemListener {
     void onItemClick(String data, int position);
 }
