@@ -1,4 +1,4 @@
-package com.wuhenzhizao.titlebar.utils;
+package com.android.xlwlibrary.commontitlebar;
 
 import android.graphics.Rect;
 import android.os.Build;
@@ -6,8 +6,6 @@ import android.view.View;
 import android.view.ViewTreeObserver;
 import android.view.Window;
 import android.widget.FrameLayout;
-
-import com.wuhenzhizao.titlebar.statusbar.StatusBarUtils;
 
 /**
  * 解决沉浸式标题栏下，键盘兼容问题

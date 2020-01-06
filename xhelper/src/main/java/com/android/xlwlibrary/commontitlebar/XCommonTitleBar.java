@@ -1,4 +1,4 @@
-package com.wuhenzhizao.titlebar.widget;
+package com.android.xlwlibrary.commontitlebar;
 
 import android.app.Activity;
 import android.content.Context;
@@ -26,9 +26,7 @@ import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.wuhenzhizao.titlebar.R;
-import com.wuhenzhizao.titlebar.statusbar.StatusBarUtils;
-import com.wuhenzhizao.titlebar.utils.ScreenUtils;
+import com.android.xlwlibrary.R;
 
 /**
  * 通用标题栏
@@ -96,7 +94,7 @@ import com.wuhenzhizao.titlebar.utils.ScreenUtils;
  * Created by wuhenzhizao on 16/1/12.
  */
 @SuppressWarnings("ResourceType")
-public class CommonTitleBar extends RelativeLayout implements View.OnClickListener {
+public class XCommonTitleBar extends RelativeLayout implements View.OnClickListener {
     private View viewStatusBarFill;                     // 状态栏填充视图
     private View viewBottomLine;                        // 分隔线视图
     private View viewBottomShadow;                      // 底部阴影
@@ -179,7 +177,7 @@ public class CommonTitleBar extends RelativeLayout implements View.OnClickListen
     private static final int TYPE_CENTER_SEARCH_RIGHT_VOICE = 0;
     private static final int TYPE_CENTER_SEARCH_RIGHT_DELETE = 1;
 
-    public CommonTitleBar(Context context, AttributeSet attrs) {
+    public XCommonTitleBar(Context context, AttributeSet attrs) {
         super(context, attrs);
         loadAttributes(context, attrs);
         initGlobalViews(context);
@@ -304,7 +302,7 @@ public class CommonTitleBar extends RelativeLayout implements View.OnClickListen
             addView(viewBottomLine, bottomLineParams);
         } else if (bottomShadowHeight != 0) {
             viewBottomShadow = new View(context);
-            viewBottomShadow.setBackgroundResource(R.mipmap.comm_titlebar_bottom_shadow);
+            viewBottomShadow.setBackgroundResource(R.drawable.comm_titlebar_bottom_shadow);
             LayoutParams bottomShadowParams = new LayoutParams(MATCH_PARENT, ScreenUtils.dp2PxInt(context, bottomShadowHeight));
             bottomShadowParams.addRule(RelativeLayout.BELOW, rlMain.getId());
 

@@ -1,6 +1,5 @@
 apply plugin: 'com.android.library'
 apply plugin: 'com.novoda.bintray-release'
-apply from:'other.gradle'
 
 static def releaseTime(){
     return new Date().format("yyyyMMddHHmmss",TimeZone.getDefault())
@@ -11,7 +10,7 @@ publish {
     userOrg = 'xuliang'//用户名
     groupId = 'com.liuao.mylibrary'//生成的gradle依赖前缀。
     artifactId = 'xhelper'//项目名
-    publishVersion = '1.0.3'
+    publishVersion = '1.0.5'
     desc = 'android test'
     website = 'https://github.com/15874134131/xutils'
     repository = 'https://github.com/15874134131/xutils.git'

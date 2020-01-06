@@ -12,7 +12,11 @@ public  class XLogHelper {
     private static final int WARN=4;
     private static final int ERROR=6;
     private static final int NOTHING=7;
-    private static final int LEVEL=ERROR;
+    private static int LEVEL=ERROR;
+
+    public void setLEVEL(int level){
+        this.LEVEL=level;
+    }
 
     public static void v(String tag, String msg){
         if (LEVEL<=VERBOSE){

@@ -1,4 +1,4 @@
-package com.wuhenzhizao.titlebar.statusbar;
+package com.android.xlwlibrary.commontitlebar;
 
 import android.app.Activity;
 import android.os.Build;

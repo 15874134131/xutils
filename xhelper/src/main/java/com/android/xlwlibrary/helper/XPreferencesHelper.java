@@ -29,6 +29,7 @@ public class XPreferencesHelper {
      */
     public XPreferencesHelper(Context context) {
         preferences = PreferenceManager.getDefaultSharedPreferences(context.getApplicationContext());
+
     }
 
     /**
