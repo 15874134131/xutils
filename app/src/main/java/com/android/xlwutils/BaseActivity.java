@@ -3,8 +3,6 @@ package com.android.xlwutils;
 import android.os.Bundle;
 
 import androidx.fragment.app.FragmentActivity;
-import com.android.xlwlibrary.bean.Event;
-import com.android.xlwlibrary.helper.XScreenHelper;
 import org.greenrobot.eventbus.*;
 
 
@@ -22,9 +20,9 @@ public abstract class BaseActivity extends FragmentActivity {
         //是因为你需要在setContentView之后才可以调用 setRootViewFitsSystemWindows
 
         //当FitsSystemWindows设置 true 时，会在屏幕最上方预留出状态栏高度的 padding
-        XScreenHelper.setRootViewFitsSystemWindows(this,true);
+/*        XScreenHelper.setRootViewFitsSystemWindows(this,true);
         //设置状态栏透明
-        XScreenHelper.setTranslucentStatus(this);
+        XScreenHelper.setTranslucentStatus(this);*/
         //一般的手机的状态栏文字和图标都是白色的, 可如果你的应用也是纯白色的, 或导致状态栏文字看不清
         //所以如果你是这种情况,请使用以下代码, 设置状态使用深色文字图标风格, 否则你可以选择性注释掉这个if内容
 /*        if (!StatusBarUtil.setStatusBarDarkTheme(this, true)) {
@@ -53,34 +51,34 @@ public abstract class BaseActivity extends FragmentActivity {
     }
 
 
-    @Subscribe(threadMode = ThreadMode.MAIN)
+/*    @Subscribe(threadMode = ThreadMode.MAIN)
     public void onEventBusCome(Event event) {
         if (event != null) {
             receiveEvent(event);
         }
-    }
+    }*/
 
-    @Subscribe(threadMode = ThreadMode.MAIN, sticky = true)
+/*    @Subscribe(threadMode = ThreadMode.MAIN, sticky = true)
     public void onStickyEventBusCome(Event event) {
         if (event != null) {
             receiveStickyEvent(event);
         }
-    }
+    }*/
 
     /**
      * 接收到分发到事件
      * @param event 事件
      */
-    protected void receiveEvent(Event event) {
+/*    protected void receiveEvent(Event event) {
 
-    }
+    }*/
     /**
      * 接受到分发的粘性事件
      * @param event 粘性事件
      */
-    protected void receiveStickyEvent(Event event) {
+/*    protected void receiveStickyEvent(Event event) {
 
-    }
+    }*/
     /**
      * @return true绑定EventBus事件分发，默认不绑定，子类需要绑定的话复写此方法返回true.
      */
