@@ -120,7 +120,7 @@
     </declare-styleable>
 
     <!--//自定义标题栏-->
-    <declare-styleable name="CommonTitleBar">
+    <declare-styleable name="XCommonTitleBar">
         <!-- 标题栏背景 图片或颜色 -->
         <attr name="titleBarColor" format="color" />
         <!-- 填充状态栏 -->
