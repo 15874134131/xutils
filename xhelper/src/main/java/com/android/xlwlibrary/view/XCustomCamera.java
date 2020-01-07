@@ -97,7 +97,9 @@ public class XCustomCamera {
         this.mContext=context;
         this.mCameraHandler=handler;
         this.tvShowphoto=textureView;
-        cameraManager = (CameraManager) mContext.getSystemService(CAMERA_SERVICE);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            cameraManager = (CameraManager) mContext.getSystemService(CAMERA_SERVICE);
+        }
     }
 
     //设置相机参数
@@ -326,14 +328,17 @@ public class XCustomCamera {
     }
 
     public void stopRepeating(){
-        if (mPreviewSession!=null){
-            //停止预览
-            try {
-                mPreviewSession .stopRepeating();
-            } catch (CameraAccessException e) {
-                e.printStackTrace();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            if (mPreviewSession!=null){
+                //停止预览
+                try {
+                    mPreviewSession .stopRepeating();
+                } catch (CameraAccessException e) {
+                    e.printStackTrace();
+                }
             }
         }
+
     }
 
     //根据TextureView的尺寸设置预览尺寸
@@ -411,24 +416,27 @@ public class XCustomCamera {
     }
 
     public void closeCamera() {
-        try {
-            if (null != mPreviewSession) {
-                mPreviewSession.stopRepeating();
-                mPreviewSession.close();
-                mPreviewSession = null;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            try {
+                if (null != mPreviewSession) {
+
+                    mPreviewSession.stopRepeating();
+                    mPreviewSession.close();
+                    mPreviewSession = null;
+                }
+                if (null != mCameraDevice) {
+                    mCameraDevice.close();
+                    mCameraDevice = null;
+                }
+                if (null != mImageReader) {
+                    mImageReader.close();
+                    mImageReader = null;
+                }
+            } catch (CameraAccessException e) {
+                e.printStackTrace();
+            } finally {
+                mCameraOpenCloseLock.release();
             }
-            if (null != mCameraDevice) {
-                mCameraDevice.close();
-                mCameraDevice = null;
-            }
-            if (null != mImageReader) {
-                mImageReader.close();
-                mImageReader = null;
-            }
-        } catch (CameraAccessException e) {
-            e.printStackTrace();
-        } finally {
-            mCameraOpenCloseLock.release();
         }
     }
     private Semaphore mCameraOpenCloseLock = new Semaphore(1);
