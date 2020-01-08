@@ -216,5 +216,7 @@
         <attr name="centerCustomViewWidth" format="integer"/>
         <attr name="centerCustomViewMarTop" format="integer|dimension" />
         <attr name="centerCustomViewMarBottom" format="integer|dimension"/>
+        <attr name="centerCustomViewMarStart" format="integer|dimension" />
+        <attr name="centerCustomViewMarEnd" format="integer|dimension"/>
     </declare-styleable>
 </resources>

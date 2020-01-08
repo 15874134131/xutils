@@ -158,6 +158,8 @@ public class XCommonTitleBar extends RelativeLayout implements View.OnClickListe
     private int centerCustomViewWidth;// 中间自定义布局宽度
     private int centerCustomViewMarTop; // 中间自定义布局距上边距
     private int centerCustomViewMarBottom;// 中间自定义布局距下边距
+    private int centerCustomViewMarStart; // 中间自定义布局距上边距
+    private int centerCustomViewMarEnd;// 中间自定义布局距下边距
     private int PADDING_5;
     private int PADDING_12;
 
@@ -249,6 +251,8 @@ public class XCommonTitleBar extends RelativeLayout implements View.OnClickListe
             centerCustomViewWidth=array.getInt(R.styleable.XCommonTitleBar_centerCustomViewWidth,WRAP_CONTENT);
             centerCustomViewMarTop=array.getInt(R.styleable.XCommonTitleBar_centerCustomViewMarTop,15);
             centerCustomViewMarBottom=array.getInt(R.styleable.XCommonTitleBar_centerCustomViewMarBottom,15);
+            centerCustomViewMarStart=array.getInt(R.styleable.XCommonTitleBar_centerCustomViewMarStart,PADDING_12);
+            centerCustomViewMarEnd=array.getInt(R.styleable.XCommonTitleBar_centerCustomViewMarEnd,PADDING_12);
         }
 
         array.recycle();
@@ -601,9 +605,7 @@ public class XCommonTitleBar extends RelativeLayout implements View.OnClickListe
                 centerCustomView.setId(StatusBarUtils.generateViewId());
             }
             LayoutParams centerCustomParams = new LayoutParams(centerCustomViewWidth, centerCustomViewHeight);
-            centerCustomParams.setMarginStart(PADDING_12);
-            centerCustomParams.setMarginEnd(PADDING_12);
-            centerCustomParams.setMargins(0,centerCustomViewMarTop,0,centerCustomViewMarBottom);
+            centerCustomParams.setMargins(centerCustomViewMarStart,centerCustomViewMarTop,centerCustomViewMarEnd,centerCustomViewMarBottom);
             centerCustomParams.addRule(RelativeLayout.CENTER_IN_PARENT);
 //            if (leftType == TYPE_LEFT_TEXTVIEW) {
 //                centerCustomParams.addRule(RelativeLayout.END_OF, tvLeft.getId());
