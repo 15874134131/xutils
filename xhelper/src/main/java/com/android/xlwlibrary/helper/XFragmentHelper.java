@@ -188,8 +188,7 @@ public final class XFragmentHelper {
      * @param fm             The manager of fragment.
      * @param add            The fragment will be add.
      * @param containerId    The id of container.
-     * @param sharedElements A View in a disappearing Fragment to match with a View in an
-     *                       appearing Fragment.
+     * @param sharedElements A View in a disappearing Fragment to match with a View in an appearing Fragment.
      */
     public static void add(@NonNull final FragmentManager fm,
                            @NonNull final Fragment add,
@@ -205,8 +204,7 @@ public final class XFragmentHelper {
      * @param add            The fragment will be add.
      * @param containerId    The id of container.
      * @param isAddStack     True to add fragment in stack, false otherwise.
-     * @param sharedElements A View in a disappearing Fragment to match with a View in an
-     *                       appearing Fragment.
+     * @param sharedElements A View in a disappearing Fragment to match with a View in an appearing Fragment.
      */
     public static void add(@NonNull final FragmentManager fm,
                            @NonNull final Fragment add,

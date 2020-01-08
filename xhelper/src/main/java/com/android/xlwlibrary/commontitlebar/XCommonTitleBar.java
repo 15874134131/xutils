@@ -154,7 +154,10 @@ public class XCommonTitleBar extends RelativeLayout implements View.OnClickListe
     private int centerSearchBgResource;                 // 搜索框背景图片
     private int centerSearchRightType;                  // 搜索框右边按钮类型  0: voice 1: delete
     private int centerCustomViewRes;                    // 中间自定义布局资源
-
+    private int centerCustomViewHeight;  // 中间自定义布局高度
+    private int centerCustomViewWidth;// 中间自定义布局宽度
+    private int centerCustomViewMarTop; // 中间自定义布局距上边距
+    private int centerCustomViewMarBottom;// 中间自定义布局距下边距
     private int PADDING_5;
     private int PADDING_12;
 
@@ -242,6 +245,10 @@ public class XCommonTitleBar extends RelativeLayout implements View.OnClickListe
             centerSearchRightType = array.getInt(R.styleable.XCommonTitleBar_centerSearchRightType, TYPE_CENTER_SEARCH_RIGHT_VOICE);
         } else if (centerType == TYPE_CENTER_CUSTOM_VIEW) {
             centerCustomViewRes = array.getResourceId(R.styleable.XCommonTitleBar_centerCustomView, 0);
+            centerCustomViewHeight=array.getInt(R.styleable.XCommonTitleBar_centerCustomViewHeight,WRAP_CONTENT);
+            centerCustomViewWidth=array.getInt(R.styleable.XCommonTitleBar_centerCustomViewWidth,WRAP_CONTENT);
+            centerCustomViewMarTop=array.getInt(R.styleable.XCommonTitleBar_centerCustomViewMarTop,15);
+            centerCustomViewMarBottom=array.getInt(R.styleable.XCommonTitleBar_centerCustomViewMarBottom,15);
         }
 
         array.recycle();
@@ -593,9 +600,10 @@ public class XCommonTitleBar extends RelativeLayout implements View.OnClickListe
             if (centerCustomView.getId() == View.NO_ID) {
                 centerCustomView.setId(StatusBarUtils.generateViewId());
             }
-            LayoutParams centerCustomParams = new LayoutParams(WRAP_CONTENT, MATCH_PARENT);
+            LayoutParams centerCustomParams = new LayoutParams(centerCustomViewWidth, centerCustomViewHeight);
             centerCustomParams.setMarginStart(PADDING_12);
             centerCustomParams.setMarginEnd(PADDING_12);
+            centerCustomParams.setMargins(0,centerCustomViewMarTop,0,centerCustomViewMarBottom);
             centerCustomParams.addRule(RelativeLayout.CENTER_IN_PARENT);
 //            if (leftType == TYPE_LEFT_TEXTVIEW) {
 //                centerCustomParams.addRule(RelativeLayout.END_OF, tvLeft.getId());

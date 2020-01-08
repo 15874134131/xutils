@@ -35,8 +35,6 @@ import com.android.xlwlibrary.helper.XColorHelper;
 
 /**
  * SwitchButton
- *
- * @author kyleduo
  * @since 2014-09-24
  */
 

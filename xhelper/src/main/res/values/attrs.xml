@@ -212,5 +212,9 @@
         <attr name="centerSearchBg" format="reference" />
         <!-- 中间自定义布局, 对应centerType_CustomView -->
         <attr name="centerCustomView" format="reference" />
+        <attr name="centerCustomViewHeight" format="integer" />
+        <attr name="centerCustomViewWidth" format="integer"/>
+        <attr name="centerCustomViewMarTop" format="integer|dimension" />
+        <attr name="centerCustomViewMarBottom" format="integer|dimension"/>
     </declare-styleable>
 </resources>
