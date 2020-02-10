@@ -10,7 +10,7 @@ publish {
     userOrg = 'xuliang'//用户名
     groupId = 'com.liuao.mylibrary'//生成的gradle依赖前缀。
     artifactId = 'xhelper'//项目名
-    publishVersion = '1.0.7'
+    publishVersion = '1.0.9'
     desc = 'android test'
     website = 'https://github.com/15874134131/xutils'
     repository = 'https://github.com/15874134131/xutils.git'
@@ -31,7 +31,7 @@ android {
         minSdkVersion 19
         targetSdkVersion 29
         versionCode 1
-        versionName "1.0.7"
+        versionName "1.0.9"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles 'consumer-rules.pro'

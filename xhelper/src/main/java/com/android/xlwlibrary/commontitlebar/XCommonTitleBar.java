@@ -247,12 +247,12 @@ public class XCommonTitleBar extends RelativeLayout implements View.OnClickListe
             centerSearchRightType = array.getInt(R.styleable.XCommonTitleBar_centerSearchRightType, TYPE_CENTER_SEARCH_RIGHT_VOICE);
         } else if (centerType == TYPE_CENTER_CUSTOM_VIEW) {
             centerCustomViewRes = array.getResourceId(R.styleable.XCommonTitleBar_centerCustomView, 0);
-            centerCustomViewHeight=array.getInt(R.styleable.XCommonTitleBar_centerCustomViewHeight,WRAP_CONTENT);
-            centerCustomViewWidth=array.getInt(R.styleable.XCommonTitleBar_centerCustomViewWidth,WRAP_CONTENT);
-            centerCustomViewMarTop=array.getInt(R.styleable.XCommonTitleBar_centerCustomViewMarTop,15);
-            centerCustomViewMarBottom=array.getInt(R.styleable.XCommonTitleBar_centerCustomViewMarBottom,15);
-            centerCustomViewMarStart=array.getInt(R.styleable.XCommonTitleBar_centerCustomViewMarStart,PADDING_12);
-            centerCustomViewMarEnd=array.getInt(R.styleable.XCommonTitleBar_centerCustomViewMarEnd,PADDING_12);
+            centerCustomViewHeight=(int) array.getDimension(R.styleable.XCommonTitleBar_centerCustomViewHeight,WRAP_CONTENT);
+            centerCustomViewWidth=(int) array.getDimension(R.styleable.XCommonTitleBar_centerCustomViewWidth,WRAP_CONTENT);
+            centerCustomViewMarTop=(int) array.getDimension(R.styleable.XCommonTitleBar_centerCustomViewMarTop,0);
+            centerCustomViewMarBottom=(int) array.getDimension(R.styleable.XCommonTitleBar_centerCustomViewMarBottom,0);
+            centerCustomViewMarStart=(int) array.getDimension(R.styleable.XCommonTitleBar_centerCustomViewMarStart,0);
+            centerCustomViewMarEnd=(int) array.getDimension(R.styleable.XCommonTitleBar_centerCustomViewMarEnd,0);
         }
 
         array.recycle();
