@@ -25,6 +25,7 @@ import java.io.Serializable;
  */
 public class XDiskLruCacheHelper
 {
+    //
     private static final String DIR_NAME = "diskCache";
     private static final int MAX_COUNT = 20 * 1024 * 1024;
     private static final int DEFAULT_APP_VERSION = 1;
