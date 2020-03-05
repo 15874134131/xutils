@@ -18,28 +18,28 @@ public  class XLogHelper {
         this.LEVEL=level;
     }
 
-    public static void v(String tag, String msg){
+    public  void v(String tag, String msg){
         if (LEVEL<=VERBOSE){
             android.util.Log.v(tag,msg);
         }
     }
 
-    public static void d(String tag, String msg){
+    public  void d(String tag, String msg){
         if (LEVEL<=DEBUG){
             android.util.Log.d(tag,msg);
         }
     }
-    public static void i(String tag, String msg){
+    public  void i(String tag, String msg){
         if (LEVEL<=INFO){
             android.util.Log.i(tag,msg);
         }
     }
-    public static void w(String tag, String msg){
+    public  void w(String tag, String msg){
         if (LEVEL<=WARN){
             android.util.Log.w(tag,msg);
         }
     }
-    public static void e(String tag, String msg){
+    public  void e(String tag, String msg){
         if (LEVEL<=ERROR){
             android.util.Log.e(tag,msg);
         }

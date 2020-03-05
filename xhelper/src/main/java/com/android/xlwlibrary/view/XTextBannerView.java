@@ -19,6 +19,7 @@ import android.widget.ViewFlipper;
 import androidx.annotation.AnimRes;
 
 import com.android.xlwlibrary.R;
+import com.android.xlwlibrary.helper.XHelper;
 import com.android.xlwlibrary.listener.ITextBannerItemListener;
 import com.android.xlwlibrary.helper.XDisplayHelper;
 import com.android.xlwlibrary.helper.XOperationHelper;
@@ -62,17 +63,19 @@ public class XTextBannerView extends RelativeLayout {
     private static final int TYPE_BOLD = 1;
     private static final int TYPE_ITALIC = 2;
     private static final int TYPE_ITALIC_BOLD = 3;
-
+    private XHelper xHelper;
     private List<String> mDatas;
     private ITextBannerItemListener mListener;
     private boolean isStarted;
     private boolean isDetachedFromWindow;
-    public XTextBannerView(Context context) {
+    private XTextBannerView(Context context) {
         this(context,null);
     }
 
+
     public XTextBannerView(Context context, AttributeSet attrs) {
         super(context, attrs);
+        xHelper=XHelper.defaultXHelper();
         init(context, attrs, 0);
     }
 
@@ -84,7 +87,7 @@ public class XTextBannerView extends RelativeLayout {
         mTextColor = typedArray.getColor(R.styleable.TextBannerViewStyle_setTextColor, mTextColor);//设置文字颜色
         if (typedArray.hasValue(R.styleable.TextBannerViewStyle_setTextSize)) {//设置文字尺寸
             mTextSize = (int) typedArray.getDimension(R.styleable.TextBannerViewStyle_setTextSize, mTextSize);
-            mTextSize = XDisplayHelper.px2sp(context, mTextSize);
+            mTextSize = xHelper.xDisplayHelper.px2sp(mTextSize);
         }
         int gravityType = typedArray.getInt(R.styleable.TextBannerViewStyle_setGravity, GRAVITY_LEFT);//显示位置
         switch (gravityType) {
@@ -238,7 +241,7 @@ public class XTextBannerView extends RelativeLayout {
     /**设置数据集合*/
     public void setDatas(List<String> datas){
         this.mDatas = datas;
-        if (XOperationHelper.notEmpty(mDatas)){
+        if (xHelper.xOperationHelper.notEmpty(mDatas)){
             mViewFlipper.removeAllViews();
             for (int i = 0; i < mDatas.size(); i++) {
                 TextView textView = new TextView(getContext());
@@ -258,7 +261,7 @@ public class XTextBannerView extends RelativeLayout {
      */
     public void setDatasWithDrawableIcon(List<String> datas, Drawable drawable, int size, int direction){
         this.mDatas = datas;
-        if (XOperationHelper.isEmpty(mDatas)){
+        if (xHelper.xOperationHelper.isEmpty(mDatas)){
             return;
         }
         mViewFlipper.removeAllViews();

@@ -32,7 +32,7 @@ public class XSystemHelper {
     /**
      * 返回当前程序版本名,获取的是
      */
-    public static String getAppVersionName(Context context) {
+    public  String getAppVersionName(Context context) {
         String versionName = "";
         int  versioncode=0;
         try {
@@ -56,7 +56,7 @@ public class XSystemHelper {
      * @return
      * @throws Exception
      */
-    public static int getVersionCode(Context context) throws Exception
+    public  int getVersionCode(Context context) throws Exception
     {
         int versionCode=0;
         // 获取packagemanager的实例
@@ -82,7 +82,7 @@ public class XSystemHelper {
      *
      * @return 返回当前系统语言。例如：当前设置的是“中文-中国”，则返回“zh-CN”
      */
-    public static String getSystemLanguage() {
+    public  String getSystemLanguage() {
         return Locale.getDefault().getLanguage();
     }
 
@@ -91,7 +91,7 @@ public class XSystemHelper {
      *
      * @return  语言列表
      */
-    public static Locale[] getSystemLanguageList() {
+    public  Locale[] getSystemLanguageList() {
         return Locale.getAvailableLocales();
     }
 
@@ -100,7 +100,7 @@ public class XSystemHelper {
      *
      * @return  系统版本号
      */
-    public static String getSystemVersion() {
+    public  String getSystemVersion() {
         return android.os.Build.VERSION.RELEASE;
     }
 
@@ -109,7 +109,7 @@ public class XSystemHelper {
      *
      * @return  手机型号
      */
-    public static String getSystemModel() {
+    public  String getSystemModel() {
         return android.os.Build.MODEL;
     }
 
@@ -118,7 +118,7 @@ public class XSystemHelper {
      *
      * @return  手机厂商
      */
-    public static String getDeviceBrand() {
+    public  String getDeviceBrand() {
         return android.os.Build.BRAND;
     }
 
@@ -127,7 +127,7 @@ public class XSystemHelper {
      * @param mContext
      * @return
      */
-    public static int  openSpeaker(Context mContext) {
+    public  int  openSpeaker(Context mContext) {
         int currVolume=0;
         try{
             AudioManager audioManager = (AudioManager) mContext.getSystemService(Context.AUDIO_SERVICE);
@@ -149,7 +149,7 @@ public class XSystemHelper {
      * 关闭扬声器
      * @param mContext
      */
-    public static void closeSpeaker(Context mContext) {
+    public  void closeSpeaker(Context mContext) {
         try {
             AudioManager audioManager = (AudioManager) mContext.getSystemService(Context.AUDIO_SERVICE);
             int current = audioManager.getStreamVolume(AudioManager.STREAM_VOICE_CALL );
@@ -175,7 +175,7 @@ public class XSystemHelper {
      * @return
      * 服务名称为全路径 例如com.ghost.WidgetUpdateService
      */
-    public static boolean isRunService(Context context, String serviceName) {
+    public  boolean isRunService(Context context, String serviceName) {
         ActivityManager manager = (ActivityManager) context.getSystemService(ACTIVITY_SERVICE);
         for (ActivityManager.RunningServiceInfo service : manager.getRunningServices(Integer.MAX_VALUE)) {
             if (serviceName.equals(service.service.getClassName())) {
@@ -190,7 +190,7 @@ public class XSystemHelper {
      *
      * @return "CPU核心个数 x CPU频率"
      */
-    public static String getCpuInfo() {
+    public  String getCpuInfo() {
         return getCpuCoreCount() + " x " + getCpuFrequency();
     }
 
@@ -199,7 +199,7 @@ public class XSystemHelper {
      *
      * @return
      */
-    private static int getCpuCoreCount() {
+    private  int getCpuCoreCount() {
         int coreCount = 1;
         try {
             String cpuDiePath = "/sys/devices/system/cpu";
@@ -224,7 +224,7 @@ public class XSystemHelper {
      *
      * @return
      */
-    private static String getCpuFrequency() {
+    private  String getCpuFrequency() {
         String cpuFreq = "";
         BufferedReader bufferedReader = null;
         try {
@@ -240,7 +240,7 @@ public class XSystemHelper {
             cpuFreq = tempFreq / (1000 * 1000) + "Gb";
             return cpuFreq;
         } catch (Exception e) {
-            return XStringHelper.isEmpty(cpuFreq) ? "N/A" : cpuFreq + "Kb";
+            return isEmpty(cpuFreq) ? "N/A" : cpuFreq + "Kb";
         } finally {
             if (bufferedReader != null) {
                 try {
@@ -252,13 +252,18 @@ public class XSystemHelper {
         }
     }
 
+    private   boolean isEmpty(String src) {
+        return src == null || "".equals(src.trim())
+                || "null".equalsIgnoreCase(src);
+    }
+
     /**
      * 获得系统总内存大小.
      *
      * @param context
      * @return
      */
-    public static String getSystemTotalMemory(Context context) {
+    public  String getSystemTotalMemory(Context context) {
         // 系统内存信息文件
         String memInfoFilePath = "/proc/meminfo";
         String firstLine;
@@ -296,7 +301,7 @@ public class XSystemHelper {
      * @param context
      * @return
      */
-    public static String getSystemAvailMemory(Context context) {
+    public  String getSystemAvailMemory(Context context) {
         ActivityManager activityManager = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
         ActivityManager.MemoryInfo memoryInfo = new ActivityManager.MemoryInfo();
         activityManager.getMemoryInfo(memoryInfo);
@@ -311,7 +316,7 @@ public class XSystemHelper {
      * @param encoding
      * @return
      */
-    public static String getRawFileContent(int resid, String encoding, Context mContext) {
+    public  String getRawFileContent(int resid, String encoding, Context mContext) {
         InputStream is = null;
         Context context = mContext;
         try {
@@ -347,7 +352,7 @@ public class XSystemHelper {
      * @return
      */
     @SuppressLint("MissingPermission")
-    public static String getDeviceId(Context context) {
+    public  String getDeviceId(Context context) {
         String deviceId="";
         TelephonyManager telephonyManager = (TelephonyManager) context
                 .getSystemService(Context.TELEPHONY_SERVICE);
@@ -367,7 +372,7 @@ public class XSystemHelper {
      * 获取CPU序列号
      * @return CPU序列号(16位) 读取失败为"0000000000000000"
      */
-    public static String getCPUSerial() {
+    public  String getCPUSerial() {
         String str = "", strCPU = "", cpuAddress = "0000000000000000";
         try {
             // 读取CPU信息

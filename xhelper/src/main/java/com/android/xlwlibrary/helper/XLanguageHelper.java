@@ -7,7 +7,8 @@ import java.util.List;
  * Created by xu on 2019/12/24.
  */
 public class XLanguageHelper {
-    private static int[]    sPinYinValue = new int[]{-20319,
+    public XLanguageHelper xLanguageHelper;
+    private static int[]  sPinYinValue = new int[]{-20319,
             -20317,
             -20304,
             -20295,
@@ -803,7 +804,7 @@ public class XLanguageHelper {
     /**
      * 单个汉字转成ASCII码
      */
-    private static int getAscii(String chs) {
+    private  int getAscii(String chs) {
         int asc = 0;
         try {
             byte[] bytes = chs.getBytes("gb2312");
@@ -827,7 +828,7 @@ public class XLanguageHelper {
     /**
      * 单个汉字转换成拼音
      **/
-    private static String getSinglePinYin(String str) {
+    private  String getSinglePinYin(String str) {
         String result = null;
         int ascii = getAscii(str);
         if (ascii > 0 && ascii < 160) {
@@ -849,7 +850,7 @@ public class XLanguageHelper {
      * @param source 原始字符
      * @return 中国->["zhong", "guo"]
      */
-    public static List<String> getPinYinList(String source) {
+    public  List<String> getPinYinList(String source) {
         if (source == null || source.isEmpty()) {
             return null;
         }
@@ -875,7 +876,7 @@ public class XLanguageHelper {
      * @param source 原始字符
      * @return 中国->"zhongguo"
      */
-    public static String getPinYin(String source) {
+    public  String getPinYin(String source) {
         if (source == null || source.isEmpty()) {
             return null;
         }

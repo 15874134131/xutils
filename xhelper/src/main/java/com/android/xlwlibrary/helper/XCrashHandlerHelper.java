@@ -22,34 +22,31 @@ public class XCrashHandlerHelper implements Thread.UncaughtExceptionHandler {
     public static final String TAG = "CrashHandlerUtil";
     //系统默认的UncaughtException处理类
     private Thread.UncaughtExceptionHandler mDefaultHandler;
-    //CrashHandler实例
-    private static XCrashHandlerHelper INSTANCE = new XCrashHandlerHelper();
     //程序的Context对象
     private Context mContext;
     //用来存储设备信息和异常信息
     private Map<String, String> infos = new HashMap<>();
     private String crashTip = "稍后重启下！";
+    private XCrashHandlerHelper(){}
+
+    public XCrashHandlerHelper(Context context) {
+        mContext = context;
+    }
+    private XHelper xHelper;
+    public void init() {
+        xHelper=XHelper.defaultXHelper();
+        //获取系统默认的UncaughtException处理器
+        mDefaultHandler = Thread.getDefaultUncaughtExceptionHandler();
+        //设置该CrashHandler为程序的默认处理器
+        Thread.setDefaultUncaughtExceptionHandler(this);
+    }
+
     public String getCrashTip() {
         return crashTip;
     }
 
     public void setCrashTip(String crashTip) {
         this.crashTip = crashTip;
-    }
-
-    private XCrashHandlerHelper() {
-    }
-
-    public static XCrashHandlerHelper getInstance() {
-        return INSTANCE;
-    }
-
-    public void init(Context context) {
-        mContext = context;
-        //获取系统默认的UncaughtException处理器
-        mDefaultHandler = Thread.getDefaultUncaughtExceptionHandler();
-        //设置该CrashHandler为程序的默认处理器
-        Thread.setDefaultUncaughtExceptionHandler(this);
     }
     /**
      * 当UncaughtException发生时会转入该函数来处理
@@ -91,12 +88,12 @@ public class XCrashHandlerHelper implements Thread.UncaughtExceptionHandler {
         //保存日志文件
         String info=saveCrashInfo2File(throwable);
         //创建文件夹
-        File cacheDir = XFileHelper.getDiskCacheDir(mContext,"crashInfo");
+        File cacheDir =xHelper.xFileHelper.getDiskCacheDir("crashInfo");
         if (!cacheDir.exists()) {
             cacheDir.mkdirs();
         }
         //创建文件
-        if (XFileHelper.createFile(cacheDir.getAbsolutePath(),"crashInfo.txt")){
+        if (xHelper.xFileHelper.createFile(cacheDir.getAbsolutePath(),"crashInfo.txt")){
             String filename = cacheDir.getAbsolutePath() + File.separator + System.currentTimeMillis()+"_crashInfo.txt";
             //往文件中写入数据
             FileOutputStream outputStream = null;

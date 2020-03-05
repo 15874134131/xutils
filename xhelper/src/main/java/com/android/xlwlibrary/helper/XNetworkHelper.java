@@ -33,7 +33,7 @@ public class XNetworkHelper {
      * @return
      * 需要<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
      */
-    public static boolean isConnected(Context context) {
+    public  boolean isConnected(Context context) {
         ConnectivityManager mConnectivityManager = (ConnectivityManager)context.getSystemService(Context.CONNECTIVITY_SERVICE);
         @SuppressLint("MissingPermission") NetworkInfo mNetworkInfo = mConnectivityManager.getActiveNetworkInfo();
         return mNetworkInfo != null && mNetworkInfo.isConnected();
@@ -44,7 +44,7 @@ public class XNetworkHelper {
      *
      * @return {@code true}: 是<br>{@code false}: 否
      */
-    public static boolean isWifiAvailable(Context context) {
+    public  boolean isWifiAvailable(Context context) {
         return isWifiEnabled(context) && isAvailableByPing("www.baidu.com");
     }
 
@@ -67,7 +67,7 @@ public class XNetworkHelper {
      * 判断 wifi 是否打开
      * @return {@code true}: 是<br>{@code false}: 否
      */
-    public static boolean isWifiEnabled(Context context) {
+    public  boolean isWifiEnabled(Context context) {
         @SuppressLint("WifiManagerLeak")
         WifiManager wifiManager = (WifiManager) context.getSystemService(Context.WIFI_SERVICE);
         return wifiManager.isWifiEnabled();
@@ -261,6 +261,7 @@ public class XNetworkHelper {
         int ipAddress = wifiInfo.getIpAddress();
         return intToIp(ipAddress);
     }
+
     private String intToIp(int i) {
         return (i & 0xFF) + "." +
                 ((i >> 8) & 0xFF) + "." +
@@ -324,11 +325,11 @@ public class XNetworkHelper {
      * @param ipORdomain 传入网址，用于ping ，如果能ping 通，说明可以进行网络访问
      * @return
      */
-    public static boolean isAvailableByPing(String ipORdomain) {
+    public  boolean isAvailableByPing(String ipORdomain) {
         if (TextUtils.isEmpty(ipORdomain)) {
             return false;
         }
-        XShellHelper.CommandResult result = XShellHelper.execCmd(String.format("ping -c 1 %s", ipORdomain), false);
+        XShellHelper.CommandResult result = XHelper.defaultXHelper().xShellHelper.execCmd(String.format("ping -c 1 %s", ipORdomain), false);
         boolean ret = result.result == 0;
         if (result.successMsg != null) {
             Log.d("yunchong", "isAvailableByPing() called" + result.successMsg);
@@ -345,7 +346,7 @@ public class XNetworkHelper {
      * @param context
      * @return
      */
-    public static String getMacAddress(Context context) {
+    public  String getMacAddress(Context context) {
         String mac = "02:00:00:00:00:00";
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
             mac = getMacDefault(context);
@@ -355,7 +356,7 @@ public class XNetworkHelper {
         return mac;
     }
 
-    public static String getMAddress() {
+    public  String getMAddress() {
         String WifiAddress = "02:00:00:00:00:00";
         try {
             WifiAddress = new BufferedReader(new FileReader(new File("/sys/class/net/wlan0/address"))).readLine();
@@ -373,7 +374,7 @@ public class XNetworkHelper {
      * 需要<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
      */
     @SuppressLint("MissingPermission")
-    private static String getMacDefault(Context context) {
+    private  String getMacDefault(Context context) {
         String mac = "02:00:00:00:00:00";
         if (context == null) {
             return mac;
@@ -404,7 +405,7 @@ public class XNetworkHelper {
      * 必须的权限 <uses-permission android:name="android.permission.INTERNET" />
      * @return
      */
-    private static String getMacFromHardware() {
+    private  String getMacFromHardware() {
         try {
             List<NetworkInterface> all = Collections.list(NetworkInterface.getNetworkInterfaces());
             for (NetworkInterface nif : all) {

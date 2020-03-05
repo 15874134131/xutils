@@ -48,7 +48,7 @@ public class XGsonHelper {
 	 *            是否排除未标注 注解的字段。
 	 * @return 目标对象的 JSON 格式的字符串。
 	 */
-	public static String toJson(Object target, Type targetType, boolean isSerializeNulls, Double version,
+	public  String toJson(Object target, Type targetType, boolean isSerializeNulls, Double version,
                                 String datePattern, boolean excludesFieldsWithoutExpose) {
 		if (target == null)
 			return EMPTY_JSON;
@@ -90,7 +90,7 @@ public class XGsonHelper {
 	 *            要转换成 JSON的目标对象。
 	 * @return 目标对象的 JSON格式的字符串。
 	 */
-	public static String toJson(Object target) {
+	public  String toJson(Object target) {
 		return toJson(target, null, false, null, null, true);
 	}
 
@@ -104,7 +104,7 @@ public class XGsonHelper {
 	 *            日期字段的格式化模式。
 	 * @return 目标对象的JSON格式的字符串。
 	 */
-	public static String toJson(Object target, String datePattern) {
+	public  String toJson(Object target, String datePattern) {
 		return toJson(target, null, false, null, datePattern, true);
 	}
 
@@ -118,7 +118,7 @@ public class XGsonHelper {
 	 *            字段的版本号注解
 	 * @return 目标对象的 JSON格式的字符串。
 	 */
-	public static String toJson(Object target, Double version) {
+	public  String toJson(Object target, Double version) {
 		return toJson(target, null, false, version, null, true);
 	}
 
@@ -132,7 +132,7 @@ public class XGsonHelper {
 	 *            是否排除未标注 注解的字段。
 	 * @return 目标对象的 JSON 格式的字符串。
 	 */
-	public static String toJson(Object target, boolean excludesFieldsWithoutExpose) {
+	public  String toJson(Object target, boolean excludesFieldsWithoutExpose) {
 		return toJson(target, null, false, null, null, excludesFieldsWithoutExpose);
 	}
 
@@ -148,7 +148,7 @@ public class XGsonHelper {
 	 *            是否排除未标注 注解的字段。
 	 * @return 目标对象的 JSON格式的字符串。
 	 */
-	public static String toJson(Object target, Double version, boolean excludesFieldsWithoutExpose) {
+	public  String toJson(Object target, Double version, boolean excludesFieldsWithoutExpose) {
 		return toJson(target, null, false, version, null, excludesFieldsWithoutExpose);
 	}
 
@@ -162,7 +162,7 @@ public class XGsonHelper {
 	 *            目标对象的类型。
 	 * @return 目标对象的 JSON格式的字符串。
 	 */
-	public static String toJson(Object target, Type targetType) {
+	public  String toJson(Object target, Type targetType) {
 		return toJson(target, targetType, false, null, null, true);
 	}
 
@@ -178,7 +178,7 @@ public class XGsonHelper {
 	 *            字段的版本号注解。
 	 * @return 目标对象的 JSON 格式的字符串。
 	 */
-	public static String toJson(Object target, Type targetType, Double version) {
+	public  String toJson(Object target, Type targetType, Double version) {
 		return toJson(target, targetType, false, version, null, true);
 	}
 
@@ -194,7 +194,7 @@ public class XGsonHelper {
 	 *            是否排除未标注注解的字段。
 	 * @return 目标对象的 JSON格式的字符串。
 	 */
-	public static String toJson(Object target, Type targetType, boolean excludesFieldsWithoutExpose) {
+	public  String toJson(Object target, Type targetType, boolean excludesFieldsWithoutExpose) {
 		return toJson(target, targetType, false, null, null, excludesFieldsWithoutExpose);
 	}
 
@@ -212,7 +212,7 @@ public class XGsonHelper {
 	 *            是否排除未标注 注解的字段。
 	 * @return 目标对象的 JSON格式的字符串。
 	 */
-	public static String toJson(Object target, Type targetType, Double version, boolean excludesFieldsWithoutExpose) {
+	public  String toJson(Object target, Type targetType, Double version, boolean excludesFieldsWithoutExpose) {
 		return toJson(target, targetType, false, version, null, excludesFieldsWithoutExpose);
 	}
 
@@ -229,7 +229,7 @@ public class XGsonHelper {
 	 *            日期格式模式。
 	 * @return 给定的 JSON 字符串表示的指定的类型对象。
 	 */
-	public static <T> T fromJson(String json, TypeToken<T> token, String datePattern) {
+	public  <T> T fromJson(String json, TypeToken<T> token, String datePattern) {
 		if (isEmpty(json)) {
 			return null;
 		}
@@ -257,7 +257,7 @@ public class XGsonHelper {
 	 *            com.google.gson.reflect.TypeToken的类型指示类对象。
 	 * @return 给定的 JSON字符串表示的指定的类型对象。
 	 */
-	public static <T> T fromJson(String json, TypeToken<T> token) {
+	public  <T> T fromJson(String json, TypeToken<T> token) {
 		return fromJson(json, token, null);
 	}
 
@@ -274,7 +274,7 @@ public class XGsonHelper {
 	 *            日期格式模式。
 	 * @return 给定的 JSON字符串表示的指定的类型对象。
 	 */
-	public static <T> T fromJson(String json, Class<T> clazz, String datePattern) {
+	public  <T> T fromJson(String json, Class<T> clazz, String datePattern) {
 		if (isEmpty(json)) {
 			return null;
 		}
@@ -302,7 +302,7 @@ public class XGsonHelper {
 	 *            要转换的目标类。
 	 * @return 给定的 JSON字符串表示的指定的类型对象。
 	 */
-	public static <T> T fromJson(String json, Class<T> clazz) {
+	public  <T> T fromJson(String json, Class<T> clazz) {
 		return fromJson(json, clazz, null);
 	}
 

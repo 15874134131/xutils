@@ -28,7 +28,7 @@ public class XPcmToWav {
      * @param destinationPath 目标wav文件路径
      * @return true|false
      */
-    public static boolean mergePCMFilesToWAVFile(List<String> filePathList,
+    public  boolean mergePCMFilesToWAVFile(List<String> filePathList,
                                                  String destinationPath) {
         File[] file = new File[filePathList.size()];
         byte buffer[] = null;
@@ -111,7 +111,7 @@ public class XPcmToWav {
      * @param deletePcmFile   是否删除源文件
      * @return
      */
-    public static boolean makePCMFileToWAVFile(String pcmPath, String destinationPath, boolean deletePcmFile) {
+    public  boolean makePCMFileToWAVFile(String pcmPath, String destinationPath, boolean deletePcmFile) {
         byte buffer[] = null;
         int TOTAL_SIZE = 0;
         File file = new File(pcmPath);
@@ -186,7 +186,7 @@ public class XPcmToWav {
      *
      * @param filePathList
      */
-    private static void clearFiles(List<String> filePathList) {
+    private  void clearFiles(List<String> filePathList) {
         for (int i = 0; i < filePathList.size(); i++) {
             File file = new File(filePathList.get(i));
             if (file.exists()) {

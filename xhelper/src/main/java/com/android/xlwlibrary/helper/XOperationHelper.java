@@ -7,11 +7,11 @@ import java.util.List;
  * 计算相关的
  */
 public class XOperationHelper {
-    public static <T> boolean notEmpty(List<T> list) {
+    public  <T> boolean notEmpty(List<T> list) {
         return !isEmpty(list);
     }
 
-    public static <T> boolean isEmpty(List<T> list) {
+    public  <T> boolean isEmpty(List<T> list) {
         if (list == null || list.size() == 0) {
             return true;
         }
@@ -23,7 +23,7 @@ public class XOperationHelper {
      * @param precision
      * @return
      */
-    public static String getPrecisionFormat(int precision) {
+    public  String getPrecisionFormat(int precision) {
         return "%." + precision + "f";
     }
 
@@ -34,7 +34,7 @@ public class XOperationHelper {
      * @param <T>
      * @return
      */
-    public static <T> T[] reverseList(T[] arrays) {
+    public  <T> T[] reverseList(T[] arrays) {
         if (arrays == null) {
             return null;
         }

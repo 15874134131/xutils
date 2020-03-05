@@ -29,43 +29,43 @@ public class XDiskLruCacheHelper
     private static final String DIR_NAME = "diskCache";
     private static final int MAX_COUNT = 20 * 1024 * 1024;
     private static final int DEFAULT_APP_VERSION = 1;
-	
 	/**
 	* The default valueCount when open DiskLruCache.
 	*/
 	private static final int DEFAULT_VALUE_COUNT = 1;
-
     private static final String TAG = "XDiskLruCacheHelper";
-
     private DiskLruCache mDiskLruCache;
 
-    public XDiskLruCacheHelper(Context context) throws IOException
+    public XDiskLruCacheHelper(){
+    }
+
+    public void install(Context context) throws IOException
     {
         mDiskLruCache = generateCache(context, DIR_NAME, MAX_COUNT);
     }
 
-    public XDiskLruCacheHelper(Context context, String dirName) throws IOException
+    public void install(Context context, String dirName) throws IOException
     {
         mDiskLruCache = generateCache(context, dirName, MAX_COUNT);
     }
 
-    public XDiskLruCacheHelper(Context context, String dirName, int maxCount) throws IOException
+    public void install(Context context, String dirName, int maxCount) throws IOException
     {
         mDiskLruCache = generateCache(context, dirName, maxCount);
     }
 
     //custom cache dir
-    public XDiskLruCacheHelper(File dir) throws IOException
+    public void install(File dir) throws IOException
     {
         mDiskLruCache = generateCache(null, dir, MAX_COUNT);
     }
 
-    public XDiskLruCacheHelper(Context context, File dir) throws IOException
+    public void install(Context context, File dir) throws IOException
     {
         mDiskLruCache = generateCache(context, dir, MAX_COUNT);
     }
 
-    public XDiskLruCacheHelper(Context context, File dir, int maxCount) throws IOException
+    public void install(Context context, File dir, int maxCount) throws IOException
     {
         mDiskLruCache = generateCache(context, dir, maxCount);
     }
@@ -98,6 +98,7 @@ public class XDiskLruCacheHelper
                 maxCount);
         return diskLruCache;
     }
+
     // =======================================
     // ============== String 数据 读写 =============
     // =======================================
@@ -493,7 +494,7 @@ public class XDiskLruCacheHelper
                 || !Environment.isExternalStorageRemovable())
         {
             cachePath = context.getExternalCacheDir().getPath();
-        } else
+        }else
         {
             cachePath = context.getCacheDir().getPath();
         }

@@ -40,9 +40,9 @@ public abstract class XBaseFragment<P extends XBasePresenter> extends Fragment i
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         unbinder=ButterKnife.bind(this, view);
-        if (isRegisterEventBus()) {
+/*        if (isRegisterEventBus()) {
             XEventBusHelper.register(this);
-        }
+        }*/
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
@@ -109,9 +109,9 @@ public abstract class XBaseFragment<P extends XBasePresenter> extends Fragment i
             mPresenter.detachView();
         }
         unbinder.unbind();
-        if (isRegisterEventBus()) {
+/*        if (isRegisterEventBus()) {
             XEventBusHelper.unregister(this);
-        }
+        }*/
         Log.i(TAG,"Base onDestroy");
     }
 

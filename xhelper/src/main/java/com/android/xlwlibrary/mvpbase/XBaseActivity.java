@@ -30,10 +30,10 @@ public abstract class XBaseActivity<P extends XBasePresenter> extends FragmentAc
         this.getWindow().setBackgroundDrawable(null);
         setContentView(initContentView());
         ButterKnife.bind(this);//初始化ButterKnife
-        XBaseActivityHelper.getUtils().addActivity(this);
+/*        XBaseActivityHelper.getUtils().addActivity(this);
 		if (isRegisterEventBus()) {
             XEventBusHelper.register(this);
-        }
+        }*/
     }
 
     protected abstract int initContentView();
@@ -113,9 +113,9 @@ public abstract class XBaseActivity<P extends XBasePresenter> extends FragmentAc
             mPresenter.cancelAll();
             mPresenter.detachView();
         }
-		if (isRegisterEventBus()) {
+/*		if (isRegisterEventBus()) {
             XEventBusHelper.unregister(this);
-        }
+        }*/
         Log.i(TAG,"Base onDestroy");
     }
 

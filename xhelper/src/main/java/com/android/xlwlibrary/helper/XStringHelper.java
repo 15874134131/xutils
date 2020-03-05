@@ -25,13 +25,13 @@ public class XStringHelper {
      * @param src 待判断的字符
      * @return
      */
-    public static boolean isEmpty(String src) {
+    public  boolean isEmpty(String src) {
         return src == null || "".equals(src.trim())
                 || "null".equalsIgnoreCase(src);
     }
 
     //MAC转纯数字
-    public static String macTonumber(String mac){
+    public  String macTonumber(String mac){
         String newMac=mac.replace(":","");
         StringBuffer sb = new StringBuffer();
         for(int i = 0;i<newMac.length();i++){
@@ -44,7 +44,7 @@ public class XStringHelper {
         }
         return sb.toString();
     }
-    private static int letterToNumber(String letter) {
+    private  int letterToNumber(String letter) {
         int length = letter.length();
         int num = 0;
         int number = 0;
@@ -62,7 +62,7 @@ public class XStringHelper {
      * @param content -- 待加密内容
      * @return
      */
-    public static String md5Decode(String content) {
+    public  String md5Decode(String content) {
         byte[] hash;
         try {
             hash = MessageDigest.getInstance("MD5").digest(content.getBytes("UTF-8"));
@@ -85,7 +85,7 @@ public class XStringHelper {
     /**
      * 将图片转换成Base64编码的字符串
      */
-    public static String imageToBase64(String path){
+    public  String imageToBase64(String path){
         if(TextUtils.isEmpty(path)){
             return null;
         }
@@ -120,7 +120,7 @@ public class XStringHelper {
      * @param signMap 需要拼接参数的数据集
      * @return 签名
      */
-    public static String getSign(Map<String, Object> signMap) {
+    public  String getSign(Map<String, Object> signMap) {
         String sign = "";
         String subSign = "";
         String md5Sign = "";

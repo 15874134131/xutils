@@ -3,6 +3,9 @@ package com.android.xlwutils;
 import android.os.Bundle;
 
 import androidx.fragment.app.FragmentActivity;
+
+import com.android.xlwlibrary.helper.XHelper;
+
 import org.greenrobot.eventbus.*;
 
 
@@ -10,12 +13,12 @@ public abstract class BaseActivity extends FragmentActivity {
     private static final String TAG="XBaseActivity";
     //判断显示在前端是否是当前activity,如果新打开的activity 是个透明属性的，旧的activity 极有可能没有走onPause 方法。
     protected Boolean isFront = false;
+    private XHelper xHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.getWindow().setBackgroundDrawable(null);//如果不是特别需要的话 ，可以设置为null ,减少一层绘制
-
         //这里注意下 因为在评论区发现有网友调用setRootViewFitsSystemWindows 里面 winContent.getChildCount()=0 导致代码无法继续
         //是因为你需要在setContentView之后才可以调用 setRootViewFitsSystemWindows
 

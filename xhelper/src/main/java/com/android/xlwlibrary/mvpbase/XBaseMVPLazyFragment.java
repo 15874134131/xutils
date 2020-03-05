@@ -18,9 +18,9 @@ public abstract class XBaseMVPLazyFragment<P extends XBasePresenter> extends XBa
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (isRegisterEventBus()) {
+  /*      if (isRegisterEventBus()) {
             XEventBusHelper.register(this);
-        }
+        }*/
     }
 
     /**
@@ -143,9 +143,9 @@ public abstract class XBaseMVPLazyFragment<P extends XBasePresenter> extends XBa
             mPresenter.cancelAll();
             mPresenter.detachView();
         }
-        if (isRegisterEventBus()) {
+/*        if (isRegisterEventBus()) {
             XEventBusHelper.unregister(this);
-        }
+        }*/
     }
 
     @Override

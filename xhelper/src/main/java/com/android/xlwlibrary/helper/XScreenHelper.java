@@ -9,6 +9,7 @@ import android.graphics.Paint;
 import android.graphics.Rect;
 import android.os.Build;
 import android.util.DisplayMetrics;
+import android.util.TypedValue;
 import android.view.Display;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,7 +31,7 @@ public class XScreenHelper {
     /**
      * 获取状态栏的高度
      */
-    public static int getStatusHeight(Context context) {
+    public  int getStatusHeight(Context context) {
         int statusHeight = -1;
         try {
             Class<?> clazz = Class.forName("com.android.internal.R$dimen");
@@ -44,9 +45,33 @@ public class XScreenHelper {
     }
 
     /**
+     * 获取是否存在NavigationBar，是否有虚拟按钮，有的话，返回虚拟按钮的高度
+     */
+    public  int checkDeviceHasNavigationBar(Context context, Activity mactivity) {
+        int hasNavigationBarheight = 0;
+        try {
+            Class systemPropertiesClass = Class.forName("android.os.SystemProperties");
+            Method m = systemPropertiesClass.getMethod("get", String.class);
+            String navBarOverride = (String) m.invoke(systemPropertiesClass, "qemu.hw.mainkeys");
+            if ("1".equals(navBarOverride)) {
+                hasNavigationBarheight = 0;
+            } else if ("0".equals(navBarOverride)) {
+                TypedValue tv = new TypedValue();
+                if (mactivity.getTheme().resolveAttribute(android.R.attr.actionBarSize, tv, true)) {
+                    hasNavigationBarheight=TypedValue.complexToDimensionPixelSize(tv.data, mactivity.getResources().getDisplayMetrics());
+                }
+                hasNavigationBarheight= 0;
+            }
+        } catch (Exception e) {
+        }
+        return hasNavigationBarheight;
+
+    }
+
+    /**
      * 获取屏幕真实宽高
      */
-    public static int[] getScreenSize(Context context) {
+    public  int[] getScreenSize(Context context) {
         WindowManager windowManager = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
         Display display = windowManager.getDefaultDisplay();
         DisplayMetrics dm = new DisplayMetrics();
@@ -63,7 +88,7 @@ public class XScreenHelper {
      * @param context
      * @return
      */
-    public static int getVirtualBarHeight(Context context) {
+    public  int getVirtualBarHeight(Context context) {
         int vh = 0;
         WindowManager windowManager = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
         Display display = windowManager.getDefaultDisplay();
@@ -83,7 +108,7 @@ public class XScreenHelper {
     }
 
     //通过判断可视区域，关闭键盘
-    public static void closeInputMethod(Activity activity,View view) {
+    public  void closeInputMethod(Activity activity,View view) {
         InputMethodManager imm = (InputMethodManager) activity.getSystemService(Context.INPUT_METHOD_SERVICE);
         //第一个参数为需要关闭的Editext
         if (onVisibleArea(activity)) {
@@ -94,7 +119,7 @@ public class XScreenHelper {
     }
 
     //弹出键盘 ，
-    public static void showInputMethod(Activity activity,View view) {
+    public  void showInputMethod(Activity activity,View view) {
         InputMethodManager imm = (InputMethodManager) activity.getSystemService(Context.INPUT_METHOD_SERVICE);
         view.requestFocus();
         //第一个参数为需要关闭的Editext
@@ -102,7 +127,7 @@ public class XScreenHelper {
     }
 
     //判断可视区域
-    private static boolean onVisibleArea(Activity activity) {
+    private  boolean onVisibleArea(Activity activity) {
         //获取当屏幕内容的高度
         int screenHeight = activity.getWindow().getDecorView().getHeight();
         //获取View可见区域的bottom
@@ -136,7 +161,7 @@ public class XScreenHelper {
      * 修改状态栏颜色，支持4.4以上版本
      * @param colorId 颜色
      */
-    public static void setStatusBarColor(Activity activity, int colorId) {
+    public  void setStatusBarColor(Activity activity, int colorId) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             Window window = activity.getWindow();
             window.setStatusBarColor(colorId);
@@ -154,7 +179,7 @@ public class XScreenHelper {
      * 设置状态栏透明
      */
     @TargetApi(19)
-    public static void setTranslucentStatus(Activity activity) {
+    public  void setTranslucentStatus(Activity activity) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             //5.x开始需要把颜色设置透明，否则导航栏会呈现系统默认的浅灰色
             Window window = activity.getWindow();
@@ -182,7 +207,7 @@ public class XScreenHelper {
      *  代码实现android:fitsSystemWindows
      * @param activity
      */
-    public static void setRootViewFitsSystemWindows(Activity activity, boolean fitSystemWindows) {
+    public  void setRootViewFitsSystemWindows(Activity activity, boolean fitSystemWindows) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             ViewGroup winContent = (ViewGroup) activity.findViewById(android.R.id.content);
             if (winContent.getChildCount() > 0) {
@@ -197,7 +222,7 @@ public class XScreenHelper {
     /**
      * 设置状态栏深色浅色切换
      */
-    public static boolean setStatusBarDarkTheme(Activity activity, boolean dark) {
+    public  boolean setStatusBarDarkTheme(Activity activity, boolean dark) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                 setStatusBarFontIconDark(activity, TYPE_M, dark);
@@ -216,7 +241,7 @@ public class XScreenHelper {
     /**
      * 设置 状态栏深色浅色切换
      */
-    private static boolean setStatusBarFontIconDark(Activity activity,@ViewType int type, boolean dark) {
+    private  boolean setStatusBarFontIconDark(Activity activity,@ViewType int type, boolean dark) {
         switch (type) {
             case TYPE_MIUI:
                 return setMiuiUI(activity, dark);
@@ -229,7 +254,7 @@ public class XScreenHelper {
     }
 
     //设置6.0 状态栏深色浅色切换
-    private static boolean setCommonUI(Activity activity, boolean dark) {
+    private  boolean setCommonUI(Activity activity, boolean dark) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             View decorView = activity.getWindow().getDecorView();
             if (decorView != null) {
@@ -250,7 +275,7 @@ public class XScreenHelper {
     }
 
     //设置Flyme 状态栏深色浅色切换
-    private static boolean setFlymeUI(Activity activity, boolean dark) {
+    private  boolean setFlymeUI(Activity activity, boolean dark) {
         try {
             Window window = activity.getWindow();
             WindowManager.LayoutParams lp = window.getAttributes();
@@ -275,7 +300,7 @@ public class XScreenHelper {
     }
 
     //设置MIUI 状态栏深色浅色切换
-    private static boolean setMiuiUI(Activity activity, boolean dark) {
+    private  boolean setMiuiUI(Activity activity, boolean dark) {
         try {
             Window window = activity.getWindow();
             Class<?> clazz = activity.getWindow().getClass();
@@ -301,7 +326,7 @@ public class XScreenHelper {
      * @param paint
      * @return
      */
-    public static float onMeasureTextHeight(Paint paint) {
+    public  float onMeasureTextHeight(Paint paint) {
         Paint.FontMetrics fontMetrics = paint.getFontMetrics();
         return (Math.abs(fontMetrics.ascent) - fontMetrics.descent);
     }
@@ -312,7 +337,7 @@ public class XScreenHelper {
      * @param defaultSize View 的默认大小
      * @return
      */
-    public static int onMeasure(int measureSpec, int defaultSize) {
+    public  int onMeasure(int measureSpec, int defaultSize) {
         int result = defaultSize;
         int specMode = View.MeasureSpec.getMode(measureSpec);
         int specSize = View.MeasureSpec.getSize(measureSpec);

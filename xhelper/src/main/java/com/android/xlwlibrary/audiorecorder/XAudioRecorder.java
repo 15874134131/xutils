@@ -9,6 +9,8 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.android.xlwlibrary.helper.XHelper;
+import com.android.xlwlibrary.helper.XPcmToWav;
 import com.android.xlwlibrary.helper.XThreadPoolHelper;
 
 import java.io.File;
@@ -48,11 +50,13 @@ public class XAudioRecorder {
     private List<String> filesName = new ArrayList<>();
     private ThreadPoolExecutor threadPoolExecutor;
     private RecordStreamListener listener;
+    private XHelper xHelper;
 
     public XAudioRecorder(Context context, ThreadPoolExecutor threadPoolExecutor, RecordStreamListener listener) {
         this.mContext=context;
         this.threadPoolExecutor=threadPoolExecutor;
         this.listener=listener;
+        xHelper=XHelper.defaultXHelper();
     }
 
     /**
@@ -255,7 +259,7 @@ public class XAudioRecorder {
             @Override
             public void run() {
                 try {
-                    if (PcmToWav.mergePCMFilesToWAVFile(filePaths,getWavFileAbsolutePath(fileName+".wav"))) {
+                    if (xHelper.xPcmToWav.mergePCMFilesToWAVFile(filePaths,getWavFileAbsolutePath(fileName+".wav"))) {
                         //操作成功
                     } else {
                         //操作失败
@@ -277,7 +281,7 @@ public class XAudioRecorder {
             @Override
             public void run() {
                 try {
-                    if (PcmToWav.makePCMFileToWAVFile(getPcmFileAbsolutePath(fileName), getWavFileAbsolutePath(fileName), true)) {
+                    if (xHelper.xPcmToWav.makePCMFileToWAVFile(getPcmFileAbsolutePath(fileName), getWavFileAbsolutePath(fileName), true)) {
                         //操作成功
                     } else {
                         //操作失败

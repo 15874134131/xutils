@@ -33,15 +33,15 @@ import java.io.IOException;
  * Bitmap处理工具
  */
 public class XBitmapHelper {
-    private XBitmapHelper() {
+    public XBitmapHelper() {
     }
 
-    public static final int Config_480P = 1;// 800*480
-    public static final int Config_720P = 2;// 1280*720
-    public static final int Config_1080P = 3;// 1920*1080
-    public static final int Config_2K = 4;// 2560*1440
+    public  final int Config_480P = 1;// 800*480
+    public  final int Config_720P = 2;// 1280*720
+    public  final int Config_1080P = 3;// 1920*1080
+    public  final int Config_2K = 4;// 2560*1440
 
-    private static int getSize(int config) {
+    private  int getSize(int config) {
         int size = 0;
         switch (config) {
             case Config_480P:
@@ -66,7 +66,7 @@ public class XBitmapHelper {
      * @param bit
      * @param config
      */
-    public static Bitmap getRightSzieBitmap(Bitmap bit, int config) {
+    public  Bitmap getRightSzieBitmap(Bitmap bit, int config) {
         // 得到理想宽度
         int ww = getSize(config);
         // 获取图片宽度
@@ -93,7 +93,7 @@ public class XBitmapHelper {
      * @param config
      * @return
      */
-    public static Bitmap getRightSzieBitmap(String fileName, int config) {
+    public  Bitmap getRightSzieBitmap(String fileName, int config) {
         BitmapFactory.Options options = new BitmapFactory.Options();
         options.inJustDecodeBounds = true;
         BitmapFactory.decodeFile(fileName, options);
@@ -115,7 +115,7 @@ public class XBitmapHelper {
      * @param bmpOriginal 传入的图片
      * @return 去色后的图片
      */
-    public static Bitmap toGrayscale(Bitmap bmpOriginal) {
+    public  Bitmap toGrayscale(Bitmap bmpOriginal) {
         int width, height;
         height = bmpOriginal.getHeight();
         width = bmpOriginal.getWidth();
@@ -139,7 +139,7 @@ public class XBitmapHelper {
      * @param pixels      圆角弧度
      * @return 修改后的图片
      */
-    public static Bitmap toGrayscale(Bitmap bmpOriginal, int pixels) {
+    public  Bitmap toGrayscale(Bitmap bmpOriginal, int pixels) {
         return toRoundCorner(toGrayscale(bmpOriginal), pixels);
     }
 
@@ -151,7 +151,7 @@ public class XBitmapHelper {
      * @param pixels 圆角的弧度
      * @return 圆角图片
      */
-    public static Bitmap toRoundCorner(Bitmap bitmap, int pixels) {
+    public  Bitmap toRoundCorner(Bitmap bitmap, int pixels) {
 
         Bitmap output = Bitmap.createBitmap(bitmap.getWidth(),
                 bitmap.getHeight(), Config.ARGB_8888);
@@ -183,7 +183,7 @@ public class XBitmapHelper {
      * @return
      */
     @SuppressWarnings("deprecation")
-    public static BitmapDrawable toRoundCorner(BitmapDrawable bitmapDrawable,
+    public  BitmapDrawable toRoundCorner(BitmapDrawable bitmapDrawable,
                                                int pixels) {
         Bitmap bitmap = bitmapDrawable.getBitmap();
         bitmapDrawable = new BitmapDrawable(toRoundCorner(bitmap, pixels));
@@ -195,7 +195,7 @@ public class XBitmapHelper {
      *
      * @param path
      */
-    public static Bitmap saveBefore(String path) {
+    public  Bitmap saveBefore(String path) {
         BitmapFactory.Options options = new BitmapFactory.Options();
         options.inJustDecodeBounds = true;
         // 获取这个图片的宽和高
@@ -224,12 +224,12 @@ public class XBitmapHelper {
      * @param height
      * @return
      */
-    public static Bitmap createBitmapBySize(Bitmap bitmap, int width, int height) {
+    public  Bitmap createBitmapBySize(Bitmap bitmap, int width, int height) {
         return Bitmap.createScaledBitmap(bitmap, width, height, true);
     }
 
     // 图片按比例大小压缩方法
-    public static Bitmap getImageFromPath(String srcPath, float maxWidth, float maxHeight) {
+    public  Bitmap getImageFromPath(String srcPath, float maxWidth, float maxHeight) {
         /*if (!isFileAtPath(srcPath)) {
             return null;
         }*/
@@ -275,7 +275,7 @@ public class XBitmapHelper {
         }
     }
 
-    public static Bitmap decodeBitmapFromResource(Resources res, int resId, int reqWidth, int reqHeight) {
+    public  Bitmap decodeBitmapFromResource(Resources res, int resId, int reqWidth, int reqHeight) {
         BitmapFactory.Options options = new BitmapFactory.Options();
         //可以只获取宽高而不加载
         options.inJustDecodeBounds = true;
@@ -303,7 +303,7 @@ public class XBitmapHelper {
      * @param reqHeight
      *            目标高度
      */
-    public static BitmapFactory.Options calculateInSampleSize(
+    public  BitmapFactory.Options calculateInSampleSize(
             final BitmapFactory.Options options, int reqWidth, int reqHeight) {
         // 源图片的高度和宽度
         final int height = options.outHeight;
@@ -344,7 +344,7 @@ public class XBitmapHelper {
 */
 
     //提取图像Alpha位图
-    public static Bitmap getAlphaBitmap(Bitmap mBitmap, int mColor) {
+    public  Bitmap getAlphaBitmap(Bitmap mBitmap, int mColor) {
         //BitmapDrawable的getIntrinsicWidth（）方法，Bitmap的getWidth（）方法
         //注意这两个方法的区别
         //Bitmap mAlphaBitmap = Bitmap.createBitmap(mBitmapDrawable.getIntrinsicWidth(), mBitmapDrawable.getIntrinsicHeight(), Config.ARGB_8888);
@@ -368,7 +368,7 @@ public class XBitmapHelper {
      * @param path 图片绝对路径
      * @return degree旋转的角度
      */
-    public static int readPictureDegree(String path) {
+    public  int readPictureDegree(String path) {
         int degree = 0;
         try {
             ExifInterface exifInterface = new ExifInterface(path);
@@ -399,7 +399,7 @@ public class XBitmapHelper {
      * @param bitmap
      * @param name
      */
-    public static void savePNG_After(Bitmap bitmap, String name) {
+    public  void savePNG_After(Bitmap bitmap, String name) {
         File file = new File(name);
         try {
             FileOutputStream out = new FileOutputStream(file);
@@ -420,7 +420,7 @@ public class XBitmapHelper {
      * @param bitmap
      * @param path
      */
-    public static boolean saveJPGE_After(Bitmap bitmap, String path, int quality) {
+    public  boolean saveJPGE_After(Bitmap bitmap, String path, int quality) {
         File file = new File(path);
         makeDir(file);
         try {
@@ -442,7 +442,7 @@ public class XBitmapHelper {
      * @param bitmap
      * @param path
      */
-    public static void saveJPGE_After(Context context, Bitmap bitmap, String path, int quality) {
+    public  void saveJPGE_After(Context context, Bitmap bitmap, String path, int quality) {
         File file = new File(path);
         makeDir(file);
         try {
@@ -465,7 +465,7 @@ public class XBitmapHelper {
      * @param bitmap
      * @param path
      */
-    public static void saveJPGE_After_PNG(Context context, Bitmap bitmap, String path, int quality) {
+    public  void saveJPGE_After_PNG(Context context, Bitmap bitmap, String path, int quality) {
         File file = new File(path);
         makeDir(file);
         try {
@@ -488,7 +488,7 @@ public class XBitmapHelper {
      * @param bitmap
      * @param path
      */
-    public static void saveJPGE_After_WebP(Context context, Bitmap bitmap, String path, int quality) {
+    public  void saveJPGE_After_WebP(Context context, Bitmap bitmap, String path, int quality) {
         File file = new File(path);
         makeDir(file);
         try {
@@ -505,7 +505,7 @@ public class XBitmapHelper {
         }
     }
 
-    private static void makeDir(File file) {
+    private  void makeDir(File file) {
         File tempPath = new File(file.getParent());
         if (!tempPath.exists()) {
             tempPath.mkdirs();
@@ -547,7 +547,7 @@ public class XBitmapHelper {
      * @param bitmap
      * @return
      */
-    public static Drawable bitmapToDrawableByBD(Bitmap bitmap) {
+    public  Drawable bitmapToDrawableByBD(Bitmap bitmap) {
         @SuppressWarnings("deprecation")
         Drawable drawable = new BitmapDrawable(bitmap);
         return drawable;
@@ -556,7 +556,7 @@ public class XBitmapHelper {
     /**
      * 将图片转换成byte[]以便能将其存到数据库
      */
-    public static byte[] getByteFromBitmap(Bitmap bitmap) {
+    public  byte[] getByteFromBitmap(Bitmap bitmap) {
         ByteArrayOutputStream out = new ByteArrayOutputStream();
         bitmap.compress(Bitmap.CompressFormat.JPEG, 100, out);
         try {
@@ -575,7 +575,7 @@ public class XBitmapHelper {
      * @param temp
      * @return
      */
-    public static Bitmap getBitmapFromByte(byte[] temp) {
+    public  Bitmap getBitmapFromByte(byte[] temp) {
         if (temp != null) {
             Bitmap bitmap = BitmapFactory.decodeByteArray(temp, 0, temp.length);
             return bitmap;
@@ -592,7 +592,7 @@ public class XBitmapHelper {
      * @param f
      * @return
      */
-    public static Bitmap getBitemapFromFile(File f) {
+    public  Bitmap getBitemapFromFile(File f) {
         if (!f.exists())
             return null;
         try {
@@ -625,7 +625,7 @@ public class XBitmapHelper {
      * @param bmp
      * @return
      */
-    public static Bitmap convertVertical(Bitmap bmp) {
+    public  Bitmap convertVertical(Bitmap bmp) {
         int w = bmp.getWidth();
         int h = bmp.getHeight();
 
@@ -642,7 +642,7 @@ public class XBitmapHelper {
      * @param path 期望宽高
      * @return
      */
-    public static Bitmap decodeFile(String path, int screenWidth, int screenHeight) {
+    public  Bitmap decodeFile(String path, int screenWidth, int screenHeight) {
         Bitmap bm = null;
         BitmapFactory.Options opt = new BitmapFactory.Options();
         //这个isjustdecodebounds很重要
@@ -676,7 +676,7 @@ public class XBitmapHelper {
      * @param drawable 资源图片
      * @return 位图
      */
-    public static Bitmap getBitmapFromDrawable(Drawable drawable) {
+    public  Bitmap getBitmapFromDrawable(Drawable drawable) {
         int width = drawable.getBounds().width();
         int height = drawable.getBounds().height();
         Bitmap bitmap = Bitmap.createBitmap(width, height, drawable
@@ -695,7 +695,7 @@ public class XBitmapHelper {
      * @param angle 旋转角度
      * @return bitmap 图片
      */
-    public static Bitmap rotaingImageView(int angle, Bitmap bitmap) {
+    public  Bitmap rotaingImageView(int angle, Bitmap bitmap) {
         //旋转图片 动作
         Matrix matrix = new Matrix();
         matrix.postRotate(angle);
@@ -712,7 +712,7 @@ public class XBitmapHelper {
      * @param bitmap
      * @return
      */
-    public static Bitmap flip(Bitmap bitmap) {
+    public  Bitmap flip(Bitmap bitmap) {
         // 点中了翻转
         Matrix m = new Matrix();
         m.postScale(-1, 1);
@@ -729,7 +729,7 @@ public class XBitmapHelper {
      * @param view
      * @return
      */
-    public static Bitmap getViewBitmap(View view) {
+    public  Bitmap getViewBitmap(View view) {
         view.clearFocus(); // 清除视图焦点
         view.setPressed(false);// 将视图设为不可点击
 
@@ -777,7 +777,7 @@ public class XBitmapHelper {
      * @param view
      * @return
      */
-    public static Bitmap convertViewToBitmap(View view) {
+    public  Bitmap convertViewToBitmap(View view) {
         view.measure(View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED),
                 View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED));
         view.layout(0, 0, view.getMeasuredWidth(), view.getMeasuredHeight());
@@ -792,7 +792,7 @@ public class XBitmapHelper {
      * @param view
      * @return
      */
-    public static Bitmap getBitmapFromView(View view) {
+    public  Bitmap getBitmapFromView(View view) {
         view.measure(View.MeasureSpec.UNSPECIFIED, View.MeasureSpec.UNSPECIFIED);
         Bitmap bitmap = Bitmap.createBitmap(view.getMeasuredWidth(), view.getMeasuredHeight(),
                 Config.ARGB_8888);
@@ -802,17 +802,17 @@ public class XBitmapHelper {
         return bitmap;
     }
 
-    public static void updateResources(Context context, String path) {
+    public  void updateResources(Context context, String path) {
         MediaScannerConnection.scanFile(context, new String[]{path}, null, null);
     }
 
-    public static Bitmap returnSaturationBitmap(Context context, Bitmap bitmap, int screenWidth, int screenHeight) {
+    public  Bitmap returnSaturationBitmap(Context context, Bitmap bitmap, int screenWidth, int screenHeight) {
         Bitmap bmp = null;
 /*
         int maxWidth = MyApplication.getInstance().getScreenWidth() - SystemUtils.dp2px(context, 20);
         int maxHeight = maxWidth * 4 / 3;*/
 
-        int reqWidth = screenWidth - XDisplayHelper.dip2px(context, 20);
+        int reqWidth = screenWidth - new XDisplayHelper(context).dip2px(20);
         int reqHeight = reqWidth * 4 / 3;
 
         bmp = createBitmap(bitmap, reqWidth, reqHeight);
@@ -836,7 +836,7 @@ public class XBitmapHelper {
      * @param reqWidth
      * @return
      */
-    public static Bitmap createBitmap(Bitmap bitmap, int reqWidth, int reqHeight){
+    public  Bitmap createBitmap(Bitmap bitmap, int reqWidth, int reqHeight){
         Bitmap bmp = null;
         int inSampleSize = 0;
 
@@ -880,7 +880,7 @@ public class XBitmapHelper {
      * @param bitmap
      * @return
      */
-    public static Bitmap getRoundedCornerBitmap(Bitmap bitmap) {
+    public  Bitmap getRoundedCornerBitmap(Bitmap bitmap) {
         Bitmap outBitmap = Bitmap.createBitmap(bitmap.getWidth(), bitmap.getHeight(), Config.ARGB_8888);
         Canvas canvas = new Canvas(outBitmap);
         final int color = 0xff424242;
@@ -904,7 +904,7 @@ public class XBitmapHelper {
      * @param progress
      * @return
      */
-    public static Bitmap returnContrastBitmap(Bitmap bitmap, int progress) {
+    public  Bitmap returnContrastBitmap(Bitmap bitmap, int progress) {
         //曝光度
         Bitmap contrast_bmp = Bitmap.createBitmap(bitmap.getWidth(), bitmap.getHeight(),
                 Config.ARGB_8888);

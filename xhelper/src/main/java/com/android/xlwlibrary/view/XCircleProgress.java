@@ -24,6 +24,7 @@ import androidx.core.content.ContextCompat;
 
 import com.android.xlwlibrary.R;
 import com.android.xlwlibrary.helper.XDisplayHelper;
+import com.android.xlwlibrary.helper.XHelper;
 import com.android.xlwlibrary.helper.XOperationHelper;
 import com.android.xlwlibrary.helper.XScreenHelper;
 
@@ -105,17 +106,19 @@ public class XCircleProgress extends View {
     private Point mCenterPoint;
     private float mRadius;
     private float mTextOffsetPercentInRadius;
+    private XHelper xHelper;
 
     @RequiresApi(api = Build.VERSION_CODES.HONEYCOMB)
     public XCircleProgress(Context context, AttributeSet attrs) {
         super(context, attrs);
+        xHelper=XHelper.defaultXHelper();
         init(context, attrs);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.HONEYCOMB)
     private void init(Context context, AttributeSet attrs) {
         mContext = context;
-        mDefaultSize = XDisplayHelper.dip2px(mContext,DEFAULT_SIZE);
+        mDefaultSize = xHelper.xDisplayHelper.dip2px(DEFAULT_SIZE);
         mAnimator = new ValueAnimator();
         mRectF = new RectF();
         drawOval=new RectF();
@@ -137,7 +140,7 @@ public class XCircleProgress extends View {
         mMaxValue = typedArray.getFloat(R.styleable.CircleProgressBar_maxValue,DEFAULT_MAX_VALUE);
         //内容数值精度格式
         mPrecision = typedArray.getInt(R.styleable.CircleProgressBar_precision, 0);
-        mPrecisionFormat = XOperationHelper.getPrecisionFormat(mPrecision);
+        mPrecisionFormat = xHelper.xOperationHelper.getPrecisionFormat(mPrecision);
         mValueColor = typedArray.getColor(R.styleable.CircleProgressBar_valueColor, Color.BLACK);
         mValueSize = typedArray.getDimension(R.styleable.CircleProgressBar_valueSize,DEFAULT_VALUE_SIZE);
 
@@ -232,8 +235,8 @@ public class XCircleProgress extends View {
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-        setMeasuredDimension(XScreenHelper.onMeasure(widthMeasureSpec, mDefaultSize),
-                XScreenHelper.onMeasure(heightMeasureSpec, mDefaultSize));
+        setMeasuredDimension(xHelper.xScreenHelper.onMeasure(widthMeasureSpec, mDefaultSize),
+                xHelper.xScreenHelper.onMeasure(heightMeasureSpec, mDefaultSize));
     }
 
     @Override
@@ -274,7 +277,7 @@ public class XCircleProgress extends View {
     }
 
     private float getBaselineOffsetFromY(Paint paint) {
-        return XScreenHelper.onMeasureTextHeight(paint) / 2;
+        return xHelper.xScreenHelper.onMeasureTextHeight(paint) / 2;
     }
 
     @Override
@@ -424,7 +427,7 @@ public class XCircleProgress extends View {
 
     public void setPrecision(int precision) {
         mPrecision = precision;
-        mPrecisionFormat = XOperationHelper.getPrecisionFormat(precision);
+        mPrecisionFormat = xHelper.xOperationHelper.getPrecisionFormat(precision);
     }
 
     public int[] getGradientColors() {

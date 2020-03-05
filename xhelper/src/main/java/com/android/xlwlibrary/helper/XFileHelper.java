@@ -15,28 +15,31 @@ import java.io.IOException;
  * Created by xu on 2019/12/9.
  */
 public class XFileHelper {
+    private Context mContext;
+    public XFileHelper(Context context){
+        mContext=context;
+    }
     /**
      * 判断手机SDCard是否已安装并可读写.
      *
      * @return
      */
-    public  static boolean isSDCardUsable() {
+    public   boolean isSDCardUsable() {
         return Environment.MEDIA_MOUNTED.equalsIgnoreCase(Environment
                 .getExternalStorageState());
     }
     /**
      *创建缓存文件夹
-     * @param context
      * @param uniqueName
      * @return
      */
-    public static File getDiskCacheDir(Context context, String uniqueName) {
+    public  File getDiskCacheDir(String uniqueName) {
         String cachePath;
         if (Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState())
                 || !Environment.isExternalStorageRemovable()) {
-            cachePath = context.getExternalCacheDir().getPath();
+            cachePath = mContext.getExternalCacheDir().getPath();
         } else {
-            cachePath = context.getCacheDir().getPath();
+            cachePath = mContext.getCacheDir().getPath();
         }
         return new File(cachePath + File.separator + uniqueName);
     }
@@ -46,7 +49,7 @@ public class XFileHelper {
      * @param bitmap
      * @return size in bytes
      */
-    public static int getBitmapSize(Bitmap bitmap) {
+    public  int getBitmapSize(Bitmap bitmap) {
         return bitmap.getRowBytes() * bitmap.getHeight();
     }
 
@@ -55,7 +58,7 @@ public class XFileHelper {
      *@param fileName 要检查的文件名
      * @return boolean, true表示存在，false表示不存在
      */
-    public static boolean isFileExist(String fileName) {
+    public  boolean isFileExist(String fileName) {
         File file = new File("绝对路径" + fileName);
         return file.exists();
     }
@@ -65,7 +68,7 @@ public class XFileHelper {
      * @param path 目录的绝对路径
      * @return 创建成功则返回true
      */
-    public static boolean createFolder(String path){
+    public  boolean createFolder(String path){
         File file = new File(path);
         return file.mkdir();
     }
@@ -76,7 +79,7 @@ public class XFileHelper {
      * @param fileName 文件名
      * @return 文件新建成功则返回true
      */
-    public static boolean createFile(String path, String fileName) {
+    public  boolean createFile(String path, String fileName) {
         File file = new File(path + File.separator + fileName);
         if (file.exists()) {
             return false;
@@ -96,7 +99,7 @@ public class XFileHelper {
      * @param fileName 文件名
      * @return 删除成功则返回true
      */
-    public static boolean deleteFile(String path, String fileName) {
+    public  boolean deleteFile(String path, String fileName) {
         File file = new File(path + File.separator + fileName);
         return file.exists() && file.delete();
     }
@@ -105,7 +108,7 @@ public class XFileHelper {
      * 删除一个目录（可以是非空目录）
      * @param dir 目录绝对路径
      */
-    public static boolean deleteDirection(File dir) {
+    public  boolean deleteDirection(File dir) {
         if (dir == null || !dir.exists() || dir.isFile()) {
             return false;
         }
@@ -126,7 +129,7 @@ public class XFileHelper {
      * @param fileStr 文件的绝对路径
      * @param isAppend true从尾部写入，false从头覆盖写入
      */
-    public static void writeFile(String text, String fileStr, boolean isAppend) {
+    public  void writeFile(String text, String fileStr, boolean isAppend) {
         try {
             File file = new File(fileStr);
             File parentFile = file.getParentFile();
@@ -151,7 +154,7 @@ public class XFileHelper {
      * @param destDir 目标文件所在目录
      * @return boolean true拷贝成功
      */
-    public static boolean copyFile(String srcPath, String destDir){
+    public  boolean copyFile(String srcPath, String destDir){
         boolean flag = false;
         File srcFile = new File(srcPath); // 源文件
         if (!srcFile.exists()){
@@ -195,7 +198,7 @@ public class XFileHelper {
      * @param newPath 新文件的绝对路径
      * @return 文件重命名成功则返回true
      */
-    public static boolean renameTo(String oldPath, String newPath){
+    public  boolean renameTo(String oldPath, String newPath){
         if (oldPath.equals(newPath)){
             Log.i("FileUtils is renameTo：","文件重命名失败：新旧文件名绝对路径相同");
             return false;
@@ -211,7 +214,7 @@ public class XFileHelper {
      *@param path 文件的绝对路径
      *@return 文件大小
      */
-    public static long getFileSize(String path){
+    public  long getFileSize(String path){
         File file = new File(path);
         return file.length();
     }
@@ -221,7 +224,7 @@ public class XFileHelper {
      *@param  file 目录所在绝对路径
      * @return 文件夹的大小
      */
-    public static double getDirSize(File file) {
+    public  double getDirSize(File file) {
         if (file.exists()) {
             //如果是目录则递归计算其内容的总大小
             if (file.isDirectory()) {
@@ -243,7 +246,7 @@ public class XFileHelper {
      * @param path 文件路径
      * @return 文件列表File[] files
      */
-    public static File[] getFileList(String path) {
+    public  File[] getFileList(String path) {
         File file = new File(path);
         if (file.isDirectory()){
             File[] files = file.listFiles();
@@ -262,7 +265,7 @@ public class XFileHelper {
      *@param path 目录的绝对路径
      * @return  文件数量
      */
-    public static int getFileCount(String path){
+    public  int getFileCount(String path){
         File directory = new File(path);
         File[] files = directory.listFiles();
         return files.length;
@@ -273,7 +276,7 @@ public class XFileHelper {
      *@param path 目录的绝对路径
      * @return 总容量大小
      * */
-    public static long getSDCardTotal(String path){
+    public  long getSDCardTotal(String path){
         if(null != path&&path.equals("")){
             StatFs statfs = new StatFs(path);
             //获取SDCard的Block总数
@@ -293,7 +296,7 @@ public class XFileHelper {
      *@param path 目录的绝对路径
      * @return 可用容量大小
      * */
-    public static long getSDCardFree(String path){
+    public  long getSDCardFree(String path){
         if(null != path&&path.equals("")){
             StatFs statfs = new StatFs(path);
             //获取SDCard的Block可用数

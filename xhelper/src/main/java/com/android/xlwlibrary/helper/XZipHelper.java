@@ -28,7 +28,7 @@ public class XZipHelper {
      * @param outPathString   要解压缩路径
      * @throws Exception
      */
-    public static void UnZipFolder(String zipFileString, String outPathString) throws Exception {
+    public  void UnZipFolder(String zipFileString, String outPathString) throws Exception {
         ZipInputStream inZip = new ZipInputStream(new FileInputStream(zipFileString));
         ZipEntry zipEntry;
         String szName = "";
@@ -63,7 +63,7 @@ public class XZipHelper {
         inZip.close();
     }
 
-    public static void UnZipFolder(String zipFileString, String outPathString, String szName) throws Exception {
+    public  void UnZipFolder(String zipFileString, String outPathString, String szName) throws Exception {
         ZipInputStream inZip = new ZipInputStream(new FileInputStream(zipFileString));
         ZipEntry zipEntry;
         while ((zipEntry = inZip.getNextEntry()) != null) {
@@ -103,7 +103,7 @@ public class XZipHelper {
      * @param zipFileString   解压完成的Zip路径
      * @throws Exception
      */
-    public static void ZipFolder(String srcFileString, String zipFileString)throws Exception {
+    public  void ZipFolder(String srcFileString, String zipFileString)throws Exception {
         //创建ZIP
         ZipOutputStream outZip = new ZipOutputStream(new FileOutputStream(zipFileString));
         //创建文件
@@ -122,7 +122,7 @@ public class XZipHelper {
      * @param zipOutputSteam
      * @throws Exception
      */
-    private static void ZipFiles(String folderString, String fileString, ZipOutputStream zipOutputSteam)throws Exception {
+    private  void ZipFiles(String folderString, String fileString, ZipOutputStream zipOutputSteam)throws Exception {
         if(zipOutputSteam == null)
             return;
         File file = new File(folderString+fileString);
@@ -161,7 +161,7 @@ public class XZipHelper {
      * @return InputStream
      * @throws Exception
      */
-    public static InputStream UpZip(String zipFileString, String fileString)throws Exception {
+    public  InputStream UpZip(String zipFileString, String fileString)throws Exception {
         ZipFile zipFile = new ZipFile(zipFileString);
         ZipEntry zipEntry = zipFile.getEntry(fileString);
         return zipFile.getInputStream(zipEntry);
@@ -175,7 +175,7 @@ public class XZipHelper {
      * @return
      * @throws Exception
      */
-    public static List<File> GetFileList(String zipFileString, boolean bContainFolder, boolean bContainFile)throws Exception {
+    public  List<File> GetFileList(String zipFileString, boolean bContainFolder, boolean bContainFile)throws Exception {
         List<File> fileList = new ArrayList<File>();
         ZipInputStream inZip = new ZipInputStream(new FileInputStream(zipFileString));
         ZipEntry zipEntry;

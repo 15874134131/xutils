@@ -11,20 +11,8 @@ import java.util.Stack;
  */
 
 public class XBaseActivityHelper {
-    private static XBaseActivityHelper baseActivityUtils = null;
     private List<Activity> activityList=new ArrayList<>();
-    public static XBaseActivityHelper getUtils(){
-        if (baseActivityUtils==null){
-            synchronized (XBaseActivityHelper.class){
-                if (baseActivityUtils==null){
-                    baseActivityUtils=new XBaseActivityHelper();
-                }
-            }
-        }
-        return baseActivityUtils;
-    }
-
-    private XBaseActivityHelper() {
+    public XBaseActivityHelper() {
         /**
          * 这里面写一些需要执行初始化的工作
          */

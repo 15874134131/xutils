@@ -11,9 +11,10 @@ import java.util.Locale;
  *关于已过去时间的帮助类
  */
 public class XGetTimeHelper {
+    public XGetTimeHelper(){}
 
     //10位时间戳
-    public static String getTime(){
+    public  String getTime(){
         long time= System.currentTimeMillis()/1000;//获取系统时间的10位的时间戳
         String str= String.valueOf(time);
         return str;
@@ -81,7 +82,7 @@ public class XGetTimeHelper {
     }
 
     //long to String 年月日 小时、分、秒
-    public static String long2String(long time) {
+    public  String long2String(long time) {
         String brith_StrTime = null;
         SimpleDateFormat sdf = null;
         sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
@@ -91,7 +92,7 @@ public class XGetTimeHelper {
     }
 
     //long to String 年月日 小时、分
-    public static String long2StringHHmm(long time) {
+    public  String long2StringHHmm(long time) {
         String brith_StrTime = null;
         SimpleDateFormat sdf = null;
         sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm");
@@ -101,7 +102,7 @@ public class XGetTimeHelper {
     }
 
     //long to String 小时、分
-    public static String long2HHmm(long time) {
+    public  String long2HHmm(long time) {
         String brith_StrTime = null;
         SimpleDateFormat sdf = null;
         sdf = new SimpleDateFormat("HH:mm");
@@ -111,7 +112,7 @@ public class XGetTimeHelper {
     }
 
     //获取 年月日、小时
-    public static String getYMDHTime(long time) {
+    public  String getYMDHTime(long time) {
         String brith_StrTime = null;
         SimpleDateFormat sdf = null;
         sdf = new SimpleDateFormat("yyyy/MM/dd HH");
@@ -120,7 +121,7 @@ public class XGetTimeHelper {
     }
 
     //获取 年月日
-    public static String getYMDTime1(long time) {
+    public  String getYMDTime1(long time) {
         String brith_StrTime = null;
         SimpleDateFormat sdf = null;
         sdf = new SimpleDateFormat("yyyy/MM/dd");
@@ -129,7 +130,7 @@ public class XGetTimeHelper {
     }
 
     //获取 年月日
-    public static String getYMDTime(long time) {
+    public  String getYMDTime(long time) {
         String brith_StrTime = null;
         SimpleDateFormat sdf = null;
         sdf = new SimpleDateFormat("yyyy-MM-dd");
@@ -138,7 +139,7 @@ public class XGetTimeHelper {
     }
 
     //获取 年月
-    public static String getYMTime(long time) {
+    public  String getYMTime(long time) {
         String brith_StrTime = null;
         SimpleDateFormat sdf = null;
         sdf = new SimpleDateFormat("yyyy-MM");
@@ -147,7 +148,7 @@ public class XGetTimeHelper {
     }
 
     //获取 年月日
-    public static String getYMDTimezh(long time) {
+    public  String getYMDTimezh(long time) {
         String brith_StrTime = null;
         SimpleDateFormat sdf = null;
         sdf = new SimpleDateFormat("yyyy年MM月dd日");
@@ -161,7 +162,7 @@ public class XGetTimeHelper {
     }
 
     //String换成时间戳提交
-    public static String ymd2Timestamp(String dateString) throws ParseException {
+    public  String ymd2Timestamp(String dateString) throws ParseException {
         String timeStamp = null;
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
         Date d;
@@ -176,7 +177,7 @@ public class XGetTimeHelper {
     }
 
     //String换成时间戳提交
-    public static String ymd2Timestamp1(String dateString) throws ParseException {
+    public  String ymd2Timestamp1(String dateString) throws ParseException {
         String timeStamp = null;
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         Date d;
@@ -191,7 +192,7 @@ public class XGetTimeHelper {
     }
 
     //字符串转换成时间戳提交-只转换年
-    public static long string2Timestamp(String dateString) throws ParseException {
+    public  long string2Timestamp(String dateString) throws ParseException {
         Date date1 = new SimpleDateFormat("yyyy")
                 .parse(dateString);
         long temp = date1.getTime() / 1000;// JAVA的时间戳长度是13位,除以1000和php一样
@@ -199,7 +200,7 @@ public class XGetTimeHelper {
     }
 
     //String换成时间戳提交
-    public static String ymdhm2Timestamp(String dateString) throws ParseException {
+    public  String ymdhm2Timestamp(String dateString) throws ParseException {
         String timeStamp = null;
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH/mm");
         Date d;
@@ -214,7 +215,7 @@ public class XGetTimeHelper {
     }
 
     //String换成时间戳提交
-    public static String ymdhms2Timestamp(String dateString) throws ParseException {
+    public  String ymdhms2Timestamp(String dateString) throws ParseException {
         String timeStamp = null;
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH/mm/ss");
         Date d;
@@ -229,7 +230,7 @@ public class XGetTimeHelper {
     }
 
     //获取几小时，几分钟后的时间
-    public static String getDate(int hour, int min) {
+    public  String getDate(int hour, int min) {
         Date d = new Date();
         Calendar now = Calendar.getInstance();
         now.setTime(d);
@@ -248,7 +249,7 @@ public class XGetTimeHelper {
      * @param month
      * @return
      */
-    public static int getDay(int year, int month) {
+    public  int getDay(int year, int month) {
         int day = 30;
         boolean flag = false;
         switch (year % 4) {
@@ -284,14 +285,14 @@ public class XGetTimeHelper {
      * @return
      * @throws ParseException
      */
-    public static String timeStamp2Date(String dateString) {
+    public  String timeStamp2Date(String dateString) {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
 
         return sdf.format(new Date(Long.valueOf(dateString) * 1000));
     }
 
     //获取上个月
-    public static String getLastMonth(String strDate, int last) {
+    public  String getLastMonth(String strDate, int last) {
         if (null == strDate) {
             return null;
         }
@@ -313,7 +314,7 @@ public class XGetTimeHelper {
     /**
      * 毫秒转化
      */
-    public static String stringForTime(int timeMs) {
+    public  String stringForTime(int timeMs) {
         int totalSeconds = timeMs / 1000;
         int seconds = totalSeconds % 60;
         int minutes = (totalSeconds / 60) % 60;

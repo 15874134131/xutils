@@ -32,14 +32,15 @@ public final class XFragmentHelper {
     private static final int TYPE_REPLACE_FRAGMENT   = 0x01 << 4;
     private static final int TYPE_REMOVE_FRAGMENT    = 0x01 << 5;
     private static final int TYPE_REMOVE_TO_FRAGMENT = 0x01 << 6;
-
     private static final String ARGS_ID           = "args_id";
     private static final String ARGS_IS_HIDE      = "args_is_hide";
     private static final String ARGS_IS_ADD_STACK = "args_is_add_stack";
     private static final String ARGS_TAG          = "args_tag";
 
-    private XFragmentHelper() {
+/*    private XFragmentHelper() {
         throw new UnsupportedOperationException("u can't instantiate me...");
+    }*/
+    public XFragmentHelper(){
     }
 
     /**
@@ -49,7 +50,7 @@ public final class XFragmentHelper {
      * @param add         The fragment will be add.
      * @param containerId The id of container.
      */
-    public static void add(@NonNull final FragmentManager fm,
+    public  void add(@NonNull final FragmentManager fm,
                            @NonNull final Fragment add,
                            @IdRes final int containerId) {
         add(fm, add, containerId, null, false, false);
@@ -63,7 +64,7 @@ public final class XFragmentHelper {
      * @param containerId The id of container.
      * @param isHide      True to hide, false otherwise.
      */
-    public static void add(@NonNull final FragmentManager fm,
+    public  void add(@NonNull final FragmentManager fm,
                            @NonNull final Fragment add,
                            @IdRes final int containerId,
                            final boolean isHide) {
@@ -79,7 +80,7 @@ public final class XFragmentHelper {
      * @param isHide      True to hide, false otherwise.
      * @param isAddStack  True to add fragment in stack, false otherwise.
      */
-    public static void add(@NonNull final FragmentManager fm,
+    public  void add(@NonNull final FragmentManager fm,
                            @NonNull final Fragment add,
                            @IdRes final int containerId,
                            final boolean isHide,
@@ -98,7 +99,7 @@ public final class XFragmentHelper {
      * @param exitAnim    An animation or animator resource ID used for the exit animation on the
      *                    view of the fragment being removed or detached.
      */
-    public static void add(@NonNull final FragmentManager fm,
+    public  void add(@NonNull final FragmentManager fm,
                            @NonNull final Fragment add,
                            @IdRes final int containerId,
                            @AnimatorRes @AnimRes final int enterAnim,
@@ -118,7 +119,7 @@ public final class XFragmentHelper {
      * @param exitAnim    An animation or animator resource ID used for the exit animation on the
      *                    view of the fragment being removed or detached.
      */
-    public static void add(@NonNull final FragmentManager fm,
+    public  void add(@NonNull final FragmentManager fm,
                            @NonNull final Fragment add,
                            @IdRes final int containerId,
                            final boolean isAddStack,
@@ -144,7 +145,7 @@ public final class XFragmentHelper {
      *                     view of the fragment being removed or detached caused by
      *                     popBackStack() or similar methods.
      */
-    public static void add(@NonNull final FragmentManager fm,
+    public  void add(@NonNull final FragmentManager fm,
                            @NonNull final Fragment add,
                            @IdRes final int containerId,
                            @AnimatorRes @AnimRes final int enterAnim,
@@ -172,7 +173,7 @@ public final class XFragmentHelper {
      *                     view of the fragment being removed or detached caused by
      *                     popBackStack() or similar methods.
      */
-    public static void add(@NonNull final FragmentManager fm,
+    public  void add(@NonNull final FragmentManager fm,
                            @NonNull final Fragment add,
                            @IdRes final int containerId,
                            final boolean isAddStack,
@@ -191,7 +192,7 @@ public final class XFragmentHelper {
      * @param containerId    The id of container.
      * @param sharedElements A View in a disappearing Fragment to match with a View in an appearing Fragment.
      */
-    public static void add(@NonNull final FragmentManager fm,
+    public  void add(@NonNull final FragmentManager fm,
                            @NonNull final Fragment add,
                            @IdRes final int containerId,
                            @NonNull final View... sharedElements) {
@@ -207,7 +208,7 @@ public final class XFragmentHelper {
      * @param isAddStack     True to add fragment in stack, false otherwise.
      * @param sharedElements A View in a disappearing Fragment to match with a View in an appearing Fragment.
      */
-    public static void add(@NonNull final FragmentManager fm,
+    public  void add(@NonNull final FragmentManager fm,
                            @NonNull final Fragment add,
                            @IdRes final int containerId,
                            final boolean isAddStack,
@@ -223,7 +224,7 @@ public final class XFragmentHelper {
      * @param containerId The id of container.
      * @param showIndex   The index of fragment will be shown.
      */
-    public static void add(@NonNull final FragmentManager fm,
+    public  void add(@NonNull final FragmentManager fm,
                            @NonNull final List<Fragment> adds,
                            @IdRes final int containerId,
                            final int showIndex) {
@@ -238,7 +239,7 @@ public final class XFragmentHelper {
      * @param containerId The id of container.
      * @param showIndex   The index of fragment will be shown.
      */
-    public static void add(@NonNull final FragmentManager fm,
+    public  void add(@NonNull final FragmentManager fm,
                            @NonNull final Fragment[] adds,
                            @IdRes final int containerId,
                            final int showIndex) {
@@ -253,7 +254,7 @@ public final class XFragmentHelper {
      * @param containerId The id of container.
      * @param tag         The tag of fragment.
      */
-    public static void add(@NonNull final FragmentManager fm,
+    public  void add(@NonNull final FragmentManager fm,
                            @NonNull final Fragment add,
                            @IdRes final int containerId,
                            final String tag) {
@@ -269,7 +270,7 @@ public final class XFragmentHelper {
      * @param tag         The tag of fragment.
      * @param isHide      True to hide, false otherwise.
      */
-    public static void add(@NonNull final FragmentManager fm,
+    public  void add(@NonNull final FragmentManager fm,
                            @NonNull final Fragment add,
                            @IdRes final int containerId,
                            final String tag,
@@ -287,7 +288,7 @@ public final class XFragmentHelper {
      * @param isHide      True to hide, false otherwise.
      * @param isAddStack  True to add fragment in stack, false otherwise.
      */
-    public static void add(@NonNull final FragmentManager fm,
+    public  void add(@NonNull final FragmentManager fm,
                            @NonNull final Fragment add,
                            @IdRes final int containerId,
                            final String tag,
@@ -309,7 +310,7 @@ public final class XFragmentHelper {
      * @param exitAnim    An animation or animator resource ID used for the exit animation on the
      *                    view of the fragment being removed or detached.
      */
-    public static void add(@NonNull final FragmentManager fm,
+    public  void add(@NonNull final FragmentManager fm,
                            @NonNull final Fragment add,
                            @IdRes final int containerId,
                            final String tag,
@@ -331,7 +332,7 @@ public final class XFragmentHelper {
      * @param exitAnim    An animation or animator resource ID used for the exit animation on the
      *                    view of the fragment being removed or detached.
      */
-    public static void add(@NonNull final FragmentManager fm,
+    public  void add(@NonNull final FragmentManager fm,
                            @NonNull final Fragment add,
                            @IdRes final int containerId,
                            final String tag,
@@ -359,7 +360,7 @@ public final class XFragmentHelper {
      *                     view of the fragment being removed or detached caused by
      *                     popBackStack() or similar methods.
      */
-    public static void add(@NonNull final FragmentManager fm,
+    public  void add(@NonNull final FragmentManager fm,
                            @NonNull final Fragment add,
                            @IdRes final int containerId,
                            final String tag,
@@ -389,7 +390,7 @@ public final class XFragmentHelper {
      *                     view of the fragment being removed or detached caused by
      *                     popBackStack() or similar methods.
      */
-    public static void add(@NonNull final FragmentManager fm,
+    public  void add(@NonNull final FragmentManager fm,
                            @NonNull final Fragment add,
                            @IdRes final int containerId,
                            final String tag,
@@ -414,7 +415,7 @@ public final class XFragmentHelper {
      * @param sharedElements A View in a disappearing Fragment to match with a View in an
      *                       appearing Fragment.
      */
-    public static void add(@NonNull final FragmentManager fm,
+    public  void add(@NonNull final FragmentManager fm,
                            @NonNull final Fragment add,
                            @IdRes final int containerId,
                            final String tag,
@@ -432,7 +433,7 @@ public final class XFragmentHelper {
      * @param sharedElements A View in a disappearing Fragment to match with a View in an
      *                       appearing Fragment.
      */
-    public static void add(@NonNull final FragmentManager fm,
+    public  void add(@NonNull final FragmentManager fm,
                            @NonNull final Fragment add,
                            @IdRes final int containerId,
                            final String tag,
@@ -452,7 +453,7 @@ public final class XFragmentHelper {
      * @param containerId The id of container.
      * @param showIndex   The index of fragment will be shown.
      */
-    public static void add(@NonNull final FragmentManager fm,
+    public  void add(@NonNull final FragmentManager fm,
                            @NonNull final List<Fragment> adds,
                            @IdRes final int containerId,
                            final String[] tags,
@@ -468,7 +469,7 @@ public final class XFragmentHelper {
      * @param containerId The id of container.
      * @param showIndex   The index of fragment will be shown.
      */
-    public static void add(@NonNull final FragmentManager fm,
+    public  void add(@NonNull final FragmentManager fm,
                            @NonNull final Fragment[] adds,
                            @IdRes final int containerId,
                            final String[] tags,
@@ -490,7 +491,7 @@ public final class XFragmentHelper {
      *
      * @param show The fragment will be show.
      */
-    public static void show(@NonNull final Fragment show) {
+    public  void show(@NonNull final Fragment show) {
         putArgs(show, false);
         operateNoAnim(show.getFragmentManager(), TYPE_SHOW_FRAGMENT, null, show);
     }
@@ -500,7 +501,7 @@ public final class XFragmentHelper {
      *
      * @param fm The manager of fragment.
      */
-    public static void show(@NonNull final FragmentManager fm) {
+    public  void show(@NonNull final FragmentManager fm) {
         List<Fragment> fragments = getFragments(fm);
         for (Fragment show : fragments) {
             putArgs(show, false);
@@ -517,7 +518,7 @@ public final class XFragmentHelper {
      *
      * @param hide The fragment will be hide.
      */
-    public static void hide(@NonNull final Fragment hide) {
+    public  void hide(@NonNull final Fragment hide) {
         putArgs(hide, true);
         operateNoAnim(hide.getFragmentManager(), TYPE_HIDE_FRAGMENT, null, hide);
     }
@@ -527,7 +528,7 @@ public final class XFragmentHelper {
      *
      * @param fm The manager of fragment.
      */
-    public static void hide(@NonNull final FragmentManager fm) {
+    public  void hide(@NonNull final FragmentManager fm) {
         List<Fragment> fragments = getFragments(fm);
         for (Fragment hide : fragments) {
             putArgs(hide, true);
@@ -545,7 +546,7 @@ public final class XFragmentHelper {
      * @param showIndex The index of fragment will be shown.
      * @param fragments The fragments will be hide.
      */
-    public static void showHide(final int showIndex, @NonNull final List<Fragment> fragments) {
+    public  void showHide(final int showIndex, @NonNull final List<Fragment> fragments) {
         showHide(fragments.get(showIndex), fragments);
     }
 
@@ -555,7 +556,7 @@ public final class XFragmentHelper {
      * @param show The fragment will be show.
      * @param hide The fragment will be hide.
      */
-    public static void showHide(@NonNull final Fragment show, @NonNull final List<Fragment> hide) {
+    public  void showHide(@NonNull final Fragment show, @NonNull final List<Fragment> hide) {
         for (Fragment fragment : hide) {
             putArgs(fragment, fragment != show);
         }
@@ -569,7 +570,7 @@ public final class XFragmentHelper {
      * @param showIndex The index of fragment will be shown.
      * @param fragments The fragment will be hide.
      */
-    public static void showHide(final int showIndex, @NonNull final Fragment... fragments) {
+    public  void showHide(final int showIndex, @NonNull final Fragment... fragments) {
         showHide(fragments[showIndex], fragments);
     }
 
@@ -579,7 +580,7 @@ public final class XFragmentHelper {
      * @param show The fragment will be show.
      * @param hide The fragment will be hide.
      */
-    public static void showHide(@NonNull final Fragment show, @NonNull final Fragment... hide) {
+    public  void showHide(@NonNull final Fragment show, @NonNull final Fragment... hide) {
         for (Fragment fragment : hide) {
             putArgs(fragment, fragment != show);
         }
@@ -592,7 +593,7 @@ public final class XFragmentHelper {
      * @param show The fragment will be show.
      * @param hide The fragment will be hide.
      */
-    public static void showHide(@NonNull final Fragment show,
+    public  void showHide(@NonNull final Fragment show,
                                 @NonNull final Fragment hide) {
         putArgs(show, false);
         putArgs(hide, true);
@@ -605,7 +606,7 @@ public final class XFragmentHelper {
      * @param srcFragment  The source of fragment.
      * @param destFragment The destination of fragment.
      */
-    public static void replace(@NonNull final Fragment srcFragment,
+    public  void replace(@NonNull final Fragment srcFragment,
                                @NonNull final Fragment destFragment) {
         replace(srcFragment, destFragment, null, false);
     }
@@ -617,7 +618,7 @@ public final class XFragmentHelper {
      * @param destFragment The destination of fragment.
      * @param isAddStack   True to add fragment in stack, false otherwise.
      */
-    public static void replace(@NonNull final Fragment srcFragment,
+    public  void replace(@NonNull final Fragment srcFragment,
                                @NonNull final Fragment destFragment,
                                final boolean isAddStack) {
         replace(srcFragment, destFragment, null, isAddStack);
@@ -633,7 +634,7 @@ public final class XFragmentHelper {
      * @param exitAnim     An animation or animator resource ID used for the exit animation on the
      *                     view of the fragment being removed or detached.
      */
-    public static void replace(@NonNull final Fragment srcFragment,
+    public  void replace(@NonNull final Fragment srcFragment,
                                @NonNull final Fragment destFragment,
                                @AnimatorRes @AnimRes final int enterAnim,
                                @AnimatorRes @AnimRes final int exitAnim) {
@@ -651,7 +652,7 @@ public final class XFragmentHelper {
      * @param exitAnim     An animation or animator resource ID used for the exit animation on the
      *                     view of the fragment being removed or detached.
      */
-    public static void replace(@NonNull final Fragment srcFragment,
+    public  void replace(@NonNull final Fragment srcFragment,
                                @NonNull final Fragment destFragment,
                                final boolean isAddStack,
                                @AnimatorRes @AnimRes final int enterAnim,
@@ -675,7 +676,7 @@ public final class XFragmentHelper {
      *                     view of the fragment being removed or detached caused by
      *                     popBackStack() or similar methods.
      */
-    public static void replace(@NonNull final Fragment srcFragment,
+    public  void replace(@NonNull final Fragment srcFragment,
                                @NonNull final Fragment destFragment,
                                @AnimatorRes @AnimRes final int enterAnim,
                                @AnimatorRes @AnimRes final int exitAnim,
@@ -702,7 +703,7 @@ public final class XFragmentHelper {
      *                     view of the fragment being removed or detached caused by
      *                     popBackStack() or similar methods.
      */
-    public static void replace(@NonNull final Fragment srcFragment,
+    public  void replace(@NonNull final Fragment srcFragment,
                                @NonNull final Fragment destFragment,
                                final boolean isAddStack,
                                @AnimatorRes @AnimRes final int enterAnim,
@@ -721,7 +722,7 @@ public final class XFragmentHelper {
      * @param sharedElements A View in a disappearing Fragment to match with a View in an
      *                       appearing Fragment.
      */
-    public static void replace(@NonNull final Fragment srcFragment,
+    public  void replace(@NonNull final Fragment srcFragment,
                                @NonNull final Fragment destFragment,
                                final View... sharedElements) {
         replace(srcFragment, destFragment, null, false, sharedElements);
@@ -736,7 +737,7 @@ public final class XFragmentHelper {
      * @param sharedElements A View in a disappearing Fragment to match with a View in an
      *                       appearing Fragment.
      */
-    public static void replace(@NonNull final Fragment srcFragment,
+    public  void replace(@NonNull final Fragment srcFragment,
                                @NonNull final Fragment destFragment,
                                final boolean isAddStack,
                                final View... sharedElements) {
@@ -750,7 +751,7 @@ public final class XFragmentHelper {
      * @param fragment    The new fragment to place in the container.
      * @param containerId The id of container.
      */
-    public static void replace(@NonNull final FragmentManager fm,
+    public  void replace(@NonNull final FragmentManager fm,
                                @NonNull final Fragment fragment,
                                @IdRes final int containerId) {
         replace(fm, fragment, containerId, null, false);
@@ -764,7 +765,7 @@ public final class XFragmentHelper {
      * @param fragment    The new fragment to place in the container.
      * @param isAddStack  True to add fragment in stack, false otherwise.
      */
-    public static void replace(@NonNull final FragmentManager fm,
+    public  void replace(@NonNull final FragmentManager fm,
                                @NonNull final Fragment fragment,
                                @IdRes final int containerId,
                                final boolean isAddStack) {
@@ -782,7 +783,7 @@ public final class XFragmentHelper {
      * @param exitAnim    An animation or animator resource ID used for the exit animation on the
      *                    view of the fragment being removed or detached.
      */
-    public static void replace(@NonNull final FragmentManager fm,
+    public  void replace(@NonNull final FragmentManager fm,
                                @NonNull final Fragment fragment,
                                @IdRes final int containerId,
                                @AnimatorRes @AnimRes final int enterAnim,
@@ -802,7 +803,7 @@ public final class XFragmentHelper {
      * @param exitAnim    An animation or animator resource ID used for the exit animation on the
      *                    view of the fragment being removed or detached.
      */
-    public static void replace(@NonNull final FragmentManager fm,
+    public  void replace(@NonNull final FragmentManager fm,
                                @NonNull final Fragment fragment,
                                @IdRes final int containerId,
                                final boolean isAddStack,
@@ -828,7 +829,7 @@ public final class XFragmentHelper {
      *                     view of the fragment being removed or detached caused by
      *                     popBackStack() or similar methods.
      */
-    public static void replace(@NonNull final FragmentManager fm,
+    public  void replace(@NonNull final FragmentManager fm,
                                @NonNull final Fragment fragment,
                                @IdRes final int containerId,
                                @AnimatorRes @AnimRes final int enterAnim,
@@ -857,7 +858,7 @@ public final class XFragmentHelper {
      *                     view of the fragment being removed or detached caused by
      *                     popBackStack() or similar methods.
      */
-    public static void replace(@NonNull final FragmentManager fm,
+    public  void replace(@NonNull final FragmentManager fm,
                                @NonNull final Fragment fragment,
                                @IdRes final int containerId,
                                final boolean isAddStack,
@@ -878,7 +879,7 @@ public final class XFragmentHelper {
      * @param sharedElements A View in a disappearing Fragment to match with a View in an
      *                       appearing Fragment.
      */
-    public static void replace(@NonNull final FragmentManager fm,
+    public  void replace(@NonNull final FragmentManager fm,
                                @NonNull final Fragment fragment,
                                @IdRes final int containerId,
                                final View... sharedElements) {
@@ -895,7 +896,7 @@ public final class XFragmentHelper {
      * @param sharedElements A View in a disappearing Fragment to match with a View in an
      *                       appearing Fragment.
      */
-    public static void replace(@NonNull final FragmentManager fm,
+    public  void replace(@NonNull final FragmentManager fm,
                                @NonNull final Fragment fragment,
                                @IdRes final int containerId,
                                final boolean isAddStack,
@@ -910,7 +911,7 @@ public final class XFragmentHelper {
      * @param destFragment The destination of fragment.
      * @param destTag      The destination of fragment's tag.
      */
-    public static void replace(@NonNull final Fragment srcFragment,
+    public  void replace(@NonNull final Fragment srcFragment,
                                @NonNull final Fragment destFragment,
                                final String destTag) {
         replace(srcFragment, destFragment, destTag, false);
@@ -924,7 +925,7 @@ public final class XFragmentHelper {
      * @param destTag      The destination of fragment's tag.
      * @param isAddStack   True to add fragment in stack, false otherwise.
      */
-    public static void replace(@NonNull final Fragment srcFragment,
+    public  void replace(@NonNull final Fragment srcFragment,
                                @NonNull final Fragment destFragment,
                                final String destTag,
                                final boolean isAddStack) {
@@ -945,7 +946,7 @@ public final class XFragmentHelper {
      * @param exitAnim     An animation or animator resource ID used for the exit animation on the
      *                     view of the fragment being removed or detached.
      */
-    public static void replace(@NonNull final Fragment srcFragment,
+    public  void replace(@NonNull final Fragment srcFragment,
                                @NonNull final Fragment destFragment,
                                final String destTag,
                                @AnimatorRes @AnimRes final int enterAnim,
@@ -965,7 +966,7 @@ public final class XFragmentHelper {
      * @param exitAnim     An animation or animator resource ID used for the exit animation on the
      *                     view of the fragment being removed or detached.
      */
-    public static void replace(@NonNull final Fragment srcFragment,
+    public  void replace(@NonNull final Fragment srcFragment,
                                @NonNull final Fragment destFragment,
                                final String destTag,
                                final boolean isAddStack,
@@ -991,7 +992,7 @@ public final class XFragmentHelper {
      *                     view of the fragment being removed or detached caused by
      *                     popBackStack() or similar methods.
      */
-    public static void replace(@NonNull final Fragment srcFragment,
+    public  void replace(@NonNull final Fragment srcFragment,
                                @NonNull final Fragment destFragment,
                                final String destTag,
                                @AnimatorRes @AnimRes final int enterAnim,
@@ -1020,7 +1021,7 @@ public final class XFragmentHelper {
      *                     view of the fragment being removed or detached caused by
      *                     popBackStack() or similar methods.
      */
-    public static void replace(@NonNull final Fragment srcFragment,
+    public  void replace(@NonNull final Fragment srcFragment,
                                @NonNull final Fragment destFragment,
                                final String destTag,
                                final boolean isAddStack,
@@ -1044,7 +1045,7 @@ public final class XFragmentHelper {
      * @param sharedElements A View in a disappearing Fragment to match with a View in an
      *                       appearing Fragment.
      */
-    public static void replace(@NonNull final Fragment srcFragment,
+    public  void replace(@NonNull final Fragment srcFragment,
                                @NonNull final Fragment destFragment,
                                final String destTag,
                                final View... sharedElements) {
@@ -1061,7 +1062,7 @@ public final class XFragmentHelper {
      * @param sharedElements A View in a disappearing Fragment to match with a View in an
      *                       appearing Fragment.
      */
-    public static void replace(@NonNull final Fragment srcFragment,
+    public  void replace(@NonNull final Fragment srcFragment,
                                @NonNull final Fragment destFragment,
                                final String destTag,
                                final boolean isAddStack,
@@ -1086,7 +1087,7 @@ public final class XFragmentHelper {
      * @param containerId The id of container.
      * @param destTag     The destination of fragment's tag.
      */
-    public static void replace(@NonNull final FragmentManager fm,
+    public  void replace(@NonNull final FragmentManager fm,
                                @NonNull final Fragment fragment,
                                @IdRes final int containerId,
                                final String destTag) {
@@ -1102,7 +1103,7 @@ public final class XFragmentHelper {
      * @param destTag     The destination of fragment's tag.
      * @param isAddStack  True to add fragment in stack, false otherwise.
      */
-    public static void replace(@NonNull final FragmentManager fm,
+    public  void replace(@NonNull final FragmentManager fm,
                                @NonNull final Fragment fragment,
                                @IdRes final int containerId,
                                final String destTag,
@@ -1124,7 +1125,7 @@ public final class XFragmentHelper {
      * @param exitAnim    An animation or animator resource ID used for the exit animation on the
      *                    view of the fragment being removed or detached.
      */
-    public static void replace(@NonNull final FragmentManager fm,
+    public  void replace(@NonNull final FragmentManager fm,
                                @NonNull final Fragment fragment,
                                @IdRes final int containerId,
                                final String destTag,
@@ -1146,7 +1147,7 @@ public final class XFragmentHelper {
      * @param exitAnim    An animation or animator resource ID used for the exit animation on the
      *                    view of the fragment being removed or detached.
      */
-    public static void replace(@NonNull final FragmentManager fm,
+    public  void replace(@NonNull final FragmentManager fm,
                                @NonNull final Fragment fragment,
                                @IdRes final int containerId,
                                final String destTag,
@@ -1174,7 +1175,7 @@ public final class XFragmentHelper {
      *                     view of the fragment being removed or detached caused by
      *                     popBackStack() or similar methods.
      */
-    public static void replace(@NonNull final FragmentManager fm,
+    public  void replace(@NonNull final FragmentManager fm,
                                @NonNull final Fragment fragment,
                                @IdRes final int containerId,
                                final String destTag,
@@ -1205,7 +1206,7 @@ public final class XFragmentHelper {
      *                     view of the fragment being removed or detached caused by
      *                     popBackStack() or similar methods.
      */
-    public static void replace(@NonNull final FragmentManager fm,
+    public  void replace(@NonNull final FragmentManager fm,
                                @NonNull final Fragment fragment,
                                @IdRes final int containerId,
                                final String destTag,
@@ -1230,7 +1231,7 @@ public final class XFragmentHelper {
      * @param sharedElements A View in a disappearing Fragment to match with a View in an
      *                       appearing Fragment.
      */
-    public static void replace(@NonNull final FragmentManager fm,
+    public  void replace(@NonNull final FragmentManager fm,
                                @NonNull final Fragment fragment,
                                @IdRes final int containerId,
                                final String destTag,
@@ -1249,7 +1250,7 @@ public final class XFragmentHelper {
      * @param sharedElements A View in a disappearing Fragment to match with a View in an
      *                       appearing Fragment.
      */
-    public static void replace(@NonNull final FragmentManager fm,
+    public  void replace(@NonNull final FragmentManager fm,
                                @NonNull final Fragment fragment,
                                @IdRes final int containerId,
                                final String destTag,
@@ -1266,7 +1267,7 @@ public final class XFragmentHelper {
      *
      * @param fm The manager of fragment.
      */
-    public static void pop(@NonNull final FragmentManager fm) {
+    public  void pop(@NonNull final FragmentManager fm) {
         pop(fm, true);
     }
 
@@ -1276,7 +1277,7 @@ public final class XFragmentHelper {
      * @param fm          The manager of fragment.
      * @param isImmediate True to pop immediately, false otherwise.
      */
-    public static void pop(@NonNull final FragmentManager fm,
+    public  void pop(@NonNull final FragmentManager fm,
                            final boolean isImmediate) {
         if (isImmediate) {
             fm.popBackStackImmediate();
@@ -1292,7 +1293,7 @@ public final class XFragmentHelper {
      * @param popClz        The class of fragment will be popped to.
      * @param isIncludeSelf True to include the fragment, false otherwise.
      */
-    public static void popTo(@NonNull final FragmentManager fm,
+    public  void popTo(@NonNull final FragmentManager fm,
                              final Class<? extends Fragment> popClz,
                              final boolean isIncludeSelf) {
         popTo(fm, popClz, isIncludeSelf, true);
@@ -1306,7 +1307,7 @@ public final class XFragmentHelper {
      * @param isIncludeSelf True to include the fragment, false otherwise.
      * @param isImmediate   True to pop immediately, false otherwise.
      */
-    public static void popTo(@NonNull final FragmentManager fm,
+    public  void popTo(@NonNull final FragmentManager fm,
                              final Class<? extends Fragment> popClz,
                              final boolean isIncludeSelf,
                              final boolean isImmediate) {
@@ -1324,7 +1325,7 @@ public final class XFragmentHelper {
      *
      * @param fm The manager of fragment.
      */
-    public static void popAll(@NonNull final FragmentManager fm) {
+    public  void popAll(@NonNull final FragmentManager fm) {
         popAll(fm, true);
     }
 
@@ -1333,7 +1334,7 @@ public final class XFragmentHelper {
      *
      * @param fm The manager of fragment.
      */
-    public static void popAll(@NonNull final FragmentManager fm, final boolean isImmediate) {
+    public  void popAll(@NonNull final FragmentManager fm, final boolean isImmediate) {
         if (fm.getBackStackEntryCount() > 0) {
             FragmentManager.BackStackEntry entry = fm.getBackStackEntryAt(0);
             if (isImmediate) {
@@ -1349,7 +1350,7 @@ public final class XFragmentHelper {
      *
      * @param remove The fragment will be removed.
      */
-    public static void remove(@NonNull final Fragment remove) {
+    public  void remove(@NonNull final Fragment remove) {
         operateNoAnim(remove.getFragmentManager(), TYPE_REMOVE_FRAGMENT, null, remove);
     }
 
@@ -1359,7 +1360,7 @@ public final class XFragmentHelper {
      * @param removeTo      The fragment will be removed to.
      * @param isIncludeSelf True to include the fragment, false otherwise.
      */
-    public static void removeTo(@NonNull final Fragment removeTo, final boolean isIncludeSelf) {
+    public  void removeTo(@NonNull final Fragment removeTo, final boolean isIncludeSelf) {
         operateNoAnim(removeTo.getFragmentManager(), TYPE_REMOVE_TO_FRAGMENT,
                 isIncludeSelf ? removeTo : null, removeTo);
     }
@@ -1369,7 +1370,7 @@ public final class XFragmentHelper {
      *
      * @param fm The manager of fragment.
      */
-    public static void removeAll(@NonNull final FragmentManager fm) {
+    public  void removeAll(@NonNull final FragmentManager fm) {
         List<Fragment> fragments = getFragments(fm);
         operateNoAnim(fm,
                 TYPE_REMOVE_FRAGMENT,
@@ -1378,7 +1379,7 @@ public final class XFragmentHelper {
         );
     }
 
-    private static void putArgs(final Fragment fragment, final Args args) {
+    private  void putArgs(final Fragment fragment, final Args args) {
         Bundle bundle = fragment.getArguments();
         if (bundle == null) {
             bundle = new Bundle();
@@ -1390,7 +1391,7 @@ public final class XFragmentHelper {
         bundle.putString(ARGS_TAG, args.tag);
     }
 
-    private static void putArgs(final Fragment fragment, final boolean isHide) {
+    private  void putArgs(final Fragment fragment, final boolean isHide) {
         Bundle bundle = fragment.getArguments();
         if (bundle == null) {
             bundle = new Bundle();
@@ -1399,7 +1400,7 @@ public final class XFragmentHelper {
         bundle.putBoolean(ARGS_IS_HIDE, isHide);
     }
 
-    private static Args getArgs(final Fragment fragment) {
+    private  Args getArgs(final Fragment fragment) {
         Bundle bundle = fragment.getArguments();
         if (bundle == null) bundle = Bundle.EMPTY;
         return new Args(bundle.getInt(ARGS_ID, fragment.getId()),
@@ -1407,7 +1408,7 @@ public final class XFragmentHelper {
                 bundle.getBoolean(ARGS_IS_ADD_STACK));
     }
 
-    private static void operateNoAnim(@Nullable final FragmentManager fm,
+    private  void operateNoAnim(@Nullable final FragmentManager fm,
                                       final int type,
                                       final Fragment src,
                                       Fragment... dest) {
@@ -1416,7 +1417,7 @@ public final class XFragmentHelper {
         operate(type, fm, ft, src, dest);
     }
 
-    private static void operate(final int type,
+    private  void operate(final int type,
                                 @NonNull final FragmentManager fm,
                                 final FragmentTransaction ft,
                                 final Fragment src,
@@ -1488,7 +1489,7 @@ public final class XFragmentHelper {
         ft.commitAllowingStateLoss();
     }
 
-    private static void addAnim(final FragmentTransaction ft,
+    private  void addAnim(final FragmentTransaction ft,
                                 final int enter,
                                 final int exit,
                                 final int popEnter,
@@ -1496,7 +1497,7 @@ public final class XFragmentHelper {
         ft.setCustomAnimations(enter, exit, popEnter, popExit);
     }
 
-    private static void addSharedElement(final FragmentTransaction ft,
+    private  void addSharedElement(final FragmentTransaction ft,
                                          final View... views) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             for (View view : views) {
@@ -1511,7 +1512,7 @@ public final class XFragmentHelper {
      * @param fm The manager of fragment.
      * @return the top fragment
      */
-    public static Fragment getTop(@NonNull final FragmentManager fm) {
+    public  Fragment getTop(@NonNull final FragmentManager fm) {
         return getTopIsInStack(fm, null, false);
     }
 
@@ -1521,11 +1522,11 @@ public final class XFragmentHelper {
      * @param fm The manager of fragment.
      * @return the top fragment in stack
      */
-    public static Fragment getTopInStack(@NonNull final FragmentManager fm) {
+    public  Fragment getTopInStack(@NonNull final FragmentManager fm) {
         return getTopIsInStack(fm, null, true);
     }
 
-    private static Fragment getTopIsInStack(@NonNull final FragmentManager fm,
+    private  Fragment getTopIsInStack(@NonNull final FragmentManager fm,
                                             Fragment parentFragment,
                                             final boolean isInStack) {
         List<Fragment> fragments = getFragments(fm);
@@ -1551,7 +1552,7 @@ public final class XFragmentHelper {
      * @param fm The manager of fragment.
      * @return the top fragment which is shown
      */
-    public static Fragment getTopShow(@NonNull final FragmentManager fm) {
+    public  Fragment getTopShow(@NonNull final FragmentManager fm) {
         return getTopShowIsInStack(fm, null, false);
     }
 
@@ -1561,11 +1562,11 @@ public final class XFragmentHelper {
      * @param fm The manager of fragment.
      * @return the top fragment which is shown in stack
      */
-    public static Fragment getTopShowInStack(@NonNull final FragmentManager fm) {
+    public  Fragment getTopShowInStack(@NonNull final FragmentManager fm) {
         return getTopShowIsInStack(fm, null, true);
     }
 
-    private static Fragment getTopShowIsInStack(@NonNull final FragmentManager fm,
+    private  Fragment getTopShowIsInStack(@NonNull final FragmentManager fm,
                                                 Fragment parentFragment,
                                                 final boolean isInStack) {
         List<Fragment> fragments = getFragments(fm);
@@ -1594,7 +1595,7 @@ public final class XFragmentHelper {
      * @param fm The manager of fragment.
      * @return the fragments in manager
      */
-    public static List<Fragment> getFragments(@NonNull final FragmentManager fm) {
+    public  List<Fragment> getFragments(@NonNull final FragmentManager fm) {
         List<Fragment> fragments = fm.getFragments();
         if (fragments == null || fragments.isEmpty()) return Collections.emptyList();
         return fragments;
@@ -1606,7 +1607,7 @@ public final class XFragmentHelper {
      * @param fm The manager of fragment.
      * @return the fragments in stack in manager
      */
-    public static List<Fragment> getFragmentsInStack(@NonNull final FragmentManager fm) {
+    public  List<Fragment> getFragmentsInStack(@NonNull final FragmentManager fm) {
         List<Fragment> fragments = getFragments(fm);
         List<Fragment> result = new ArrayList<>();
         for (Fragment fragment : fragments) {
@@ -1626,11 +1627,11 @@ public final class XFragmentHelper {
      * @param fm The manager of fragment.
      * @return all fragments in manager
      */
-    public static List<FragmentNode> getAllFragments(@NonNull final FragmentManager fm) {
+    public  List<FragmentNode> getAllFragments(@NonNull final FragmentManager fm) {
         return getAllFragments(fm, new ArrayList<FragmentNode>());
     }
 
-    private static List<FragmentNode> getAllFragments(@NonNull final FragmentManager fm,
+    private  List<FragmentNode> getAllFragments(@NonNull final FragmentManager fm,
                                                       final List<FragmentNode> result) {
         List<Fragment> fragments = getFragments(fm);
         for (int i = fragments.size() - 1; i >= 0; --i) {
@@ -1650,11 +1651,11 @@ public final class XFragmentHelper {
      * @param fm The manager of fragment.
      * @return all fragments in stack in manager
      */
-    public static List<FragmentNode> getAllFragmentsInStack(@NonNull final FragmentManager fm) {
+    public  List<FragmentNode> getAllFragmentsInStack(@NonNull final FragmentManager fm) {
         return getAllFragmentsInStack(fm, new ArrayList<FragmentNode>());
     }
 
-    private static List<FragmentNode> getAllFragmentsInStack(@NonNull final FragmentManager fm,
+    private  List<FragmentNode> getAllFragmentsInStack(@NonNull final FragmentManager fm,
                                                              final List<FragmentNode> result) {
         List<Fragment> fragments = getFragments(fm);
         for (int i = fragments.size() - 1; i >= 0; --i) {
@@ -1678,7 +1679,7 @@ public final class XFragmentHelper {
      * @param findClz The class of fragment will be found.
      * @return the fragment matches class
      */
-    public static Fragment findFragment(@NonNull final FragmentManager fm,
+    public  Fragment findFragment(@NonNull final FragmentManager fm,
                                         final Class<? extends Fragment> findClz) {
         return fm.findFragmentByTag(findClz.getName());
     }
@@ -1690,7 +1691,7 @@ public final class XFragmentHelper {
      * @param tag The tag of fragment will be found.
      * @return the fragment matches class
      */
-    public static Fragment findFragment(@NonNull final FragmentManager fm,
+    public  Fragment findFragment(@NonNull final FragmentManager fm,
                                         @NonNull final String tag) {
         return fm.findFragmentByTag(tag);
     }
@@ -1701,7 +1702,7 @@ public final class XFragmentHelper {
      * @param fragment The fragment.
      * @return {@code true}: the fragment consumes the back press<br>{@code false}: otherwise
      */
-    public static boolean dispatchBackPress(@NonNull final Fragment fragment) {
+    public  boolean dispatchBackPress(@NonNull final Fragment fragment) {
         return fragment.isResumed()
                 && fragment.isVisible()
                 && fragment.getUserVisibleHint()
@@ -1715,7 +1716,7 @@ public final class XFragmentHelper {
      * @param fm The manager of fragment.
      * @return {@code true}: the fragment consumes the back press<br>{@code false}: otherwise
      */
-    public static boolean dispatchBackPress(@NonNull final FragmentManager fm) {
+    public  boolean dispatchBackPress(@NonNull final FragmentManager fm) {
         List<Fragment> fragments = getFragments(fm);
         if (fragments == null || fragments.isEmpty()) return false;
         for (int i = fragments.size() - 1; i >= 0; --i) {
@@ -1738,7 +1739,7 @@ public final class XFragmentHelper {
      * @param fragment The fragment.
      * @param color    The background color.
      */
-    public static void setBackgroundColor(@NonNull final Fragment fragment,
+    public  void setBackgroundColor(@NonNull final Fragment fragment,
                                           @ColorInt final int color) {
         View view = fragment.getView();
         if (view != null) {
@@ -1752,7 +1753,7 @@ public final class XFragmentHelper {
      * @param fragment The fragment.
      * @param resId    The resource id.
      */
-    public static void setBackgroundResource(@NonNull final Fragment fragment,
+    public  void setBackgroundResource(@NonNull final Fragment fragment,
                                              @DrawableRes final int resId) {
         View view = fragment.getView();
         if (view != null) {
@@ -1766,7 +1767,7 @@ public final class XFragmentHelper {
      * @param fragment   The fragment.
      * @param background The background.
      */
-    public static void setBackground(@NonNull final Fragment fragment, final Drawable background) {
+    public  void setBackground(@NonNull final Fragment fragment, final Drawable background) {
         View view = fragment.getView();
         if (view == null) return;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
@@ -1782,11 +1783,11 @@ public final class XFragmentHelper {
      * @param fragment The fragment.
      * @return the simple name of fragment
      */
-    public static String getSimpleName(final Fragment fragment) {
+    public  String getSimpleName(final Fragment fragment) {
         return fragment == null ? "null" : fragment.getClass().getSimpleName();
     }
 
-    private static class Args {
+    private  class Args {
         final int     id;
         final boolean isHide;
         final boolean isAddStack;
@@ -1805,7 +1806,7 @@ public final class XFragmentHelper {
         }
     }
 
-    public static class FragmentNode {
+    public  class FragmentNode {
         final Fragment           fragment;
         final List<FragmentNode> next;
 

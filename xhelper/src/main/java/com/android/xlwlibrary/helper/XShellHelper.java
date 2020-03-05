@@ -11,11 +11,8 @@ import java.util.List;
  */
 public class XShellHelper {
     private static final String LINE_SEP = System.getProperty("line.separator");
-
-    private XShellHelper() {
-        throw new UnsupportedOperationException("cannot be instantiated");
+    public XShellHelper() {
     }
-
     /**
      * 是否是在 root 下执行命令
      *
@@ -23,7 +20,7 @@ public class XShellHelper {
      * @param isRoot  是否需要 root 权限执行
      * @return CommandResult
      */
-    public static CommandResult execCmd(String command, boolean isRoot) {
+    public  CommandResult execCmd(String command, boolean isRoot) {
         return execCmd(new String[]{command}, isRoot, true);
     }
 
@@ -34,7 +31,7 @@ public class XShellHelper {
      * @param isRoot   是否需要 root 权限执行
      * @return CommandResult
      */
-    public static CommandResult execCmd(List<String> commands, boolean isRoot) {
+    public  CommandResult execCmd(List<String> commands, boolean isRoot) {
         return execCmd(commands == null ? null : commands.toArray(new String[]{}), isRoot, true);
     }
 
@@ -45,7 +42,7 @@ public class XShellHelper {
      * @param isRoot   是否需要 root 权限执行
      * @return CommandResult
      */
-    public static CommandResult execCmd(String[] commands, boolean isRoot) {
+    public  CommandResult execCmd(String[] commands, boolean isRoot) {
         return execCmd(commands, isRoot, true);
     }
 
@@ -57,7 +54,7 @@ public class XShellHelper {
      * @param isNeedResultMsg 是否需要结果消息
      * @return CommandResult
      */
-    public static CommandResult execCmd(String command, boolean isRoot, boolean isNeedResultMsg) {
+    public  CommandResult execCmd(String command, boolean isRoot, boolean isNeedResultMsg) {
         return execCmd(new String[]{command}, isRoot, isNeedResultMsg);
     }
 
@@ -69,7 +66,7 @@ public class XShellHelper {
      * @param isNeedResultMsg 是否需要结果消息
      * @return CommandResult
      */
-    public static CommandResult execCmd(List<String> commands, boolean isRoot, boolean isNeedResultMsg) {
+    public  CommandResult execCmd(List<String> commands, boolean isRoot, boolean isNeedResultMsg) {
         return execCmd(commands == null ? null : commands.toArray(new String[]{}), isRoot, isNeedResultMsg);
     }
 
@@ -81,7 +78,7 @@ public class XShellHelper {
      * @param isNeedResultMsg 是否需要结果消息
      * @return CommandResult
      */
-    public static CommandResult execCmd(final String[] commands, final boolean isRoot, final boolean isNeedResultMsg) {
+    public  CommandResult execCmd(final String[] commands, final boolean isRoot, final boolean isNeedResultMsg) {
         int result = -1;
         if (commands == null || commands.length == 0) {
             return new CommandResult(result, null, null);
